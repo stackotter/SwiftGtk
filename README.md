@@ -1,73 +1,53 @@
 # SwiftGtk
 
-SwiftGtk is a experimental Gtk+ binding for Swift that tries to make usage of Gtk+ pleasant and "Swifty" as much as possible. Currently it implements only a small subset of Gtk+ and it works on Mac OS X and Linux.
+SwiftGtk provides Swift bindings for Gtk+ 3. It currently supports both macOS and Linux (with Windows support planned).
 
 ## Dependencies
 
-You need to have Swift 3.1 or higher installed on your computer (tested with 3.1.1 bundled with Xcode 8.3.3) and depending on your platform you need to install Gtk+3. On Mac OS X you can also build the project with Xcode.
+1. Swift 5.5 or higher
+2. Gtk+ 3
+3. clang (only required on Linux)
 
-### Mac OS X
+### macOS: Installing Gtk+ 3
 
-You need to have Gtk+3 installed on your machine. Recommended way for installing Gtk+3 is through [homebrew](http://brew.sh/).
+Install Gtk+ 3 using [homebrew](http://brew.sh/) or the package manager of your choice.
 
 ```bash
 brew install gtk+3
 ```
 
-### Linux
+### Linux: Installing Gtk+ 3 and clang
 
-You need to have Gtk+3 and Clang installed on your machine. You can easily install them with `apt-get`.
+Install Gtk+3 and Clang using `apt` or the package manager of your choice.
 
 ```bash
-sudo apt-get install libgtk-3-dev clang
+sudo apt install libgtk-3-dev clang
 ```
 
 ## Usage
 
-SwiftGtk supports [Swift Package Manager](https://github.com/apple/swift-package-manager) so you only need to add SwiftGtk to your `Package.swift`.
+Add SwiftGtk as a dependency of your project using Swift Package Manager. Below is an example package manifest that has SwiftGtk as a dependency.
 
 ```swift
 import PackageDescription
 
 let package = Package(
-    name: "SwiftGtkApplication",
-    dependencies: [
-        .Package(url: "https://github.com/TomasLinhart/SwiftGtk", Version(0, 3, 1))
-    ]
+  name: "GtkHelloWorld",
+  dependencies: [
+    .package(url: "https://github.com/stackotter/SwiftGtk", .branch("main"))
+  ]
 )
 ```
 
-After that run `swift build` in the folder where `Package.swift` is located. Once it builds you can execute the application `.build/debug/SwiftGtkApplication`.
-
 ## Demo
 
-Following code will create a window with a button that when it is pressed presents another window.
+First install the required dependencies as listed above. And then run the following commands:
 
-```swift
-import SwiftGtk
-
-let app = Application(applicationId: "com.example.application")
-app.run { window in
-    window.title = "Hello World"
-    window.defaultSize = Size(width: 400, height: 400)
-    window.resizable = true
-
-    let button = Button(label: "Press Me")
-    button.clicked = { _ in
-        let newWindow = Window(windowType: .topLevel)
-        newWindow.title = "Just a window"
-        newWindow.defaultSize = Size(width: 200, height: 200)
-        let labelPressed = Label(text: "Oh, you pressed the button.")
-        newWindow.add(labelPressed)
-
-        newWindow.showAll()
-    }
-
-    window.add(button)
-}
+```bash
+git clone https://github.com/stackotter/SwiftGtk
+cd SwiftGtk
+swift run Demo
 ```
-
-![](Screenshots/Linux.png)
 
 ## License
 
