@@ -2,21 +2,17 @@
 
 import PackageDescription
 
-#if os(OSX)
-    let gtkPath = "./CGtk/OSX"
-#elseif os(Linux)
-    let gtkPath = "./CGtk/Linux"
-#else
-    fatalError("Unsupported platform.")
-#endif
-
 let package = Package(
   name:  "SwiftGtk",
-  dependencies: [
-    .package(name: "CGtk", path: gtkPath)
-  ],
   targets: [
-    .target(name: "SwiftGtk"),
+    .systemLibrary(
+      name: "CGtk", 
+      pkgConfig: "gtk+-3.0", 
+      providers: [.brew(["gtk+3"]), 
+      .apt(["libgtk-3-dev clang"])]),
+    .target(
+      name: "SwiftGtk",
+      dependencies: ["CGtk"]),
     .executableTarget(
       name: "Demo",
       dependencies: ["SwiftGtk"],
