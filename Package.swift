@@ -1,9 +1,11 @@
+// swift-tools-version:5.5
+
 import PackageDescription
 
 #if os(OSX)
-    let gtkUrl = "https://github.com/TomasLinhart/CGtk-OSX"
+    let gtkPath = "./CGtk/OSX"
 #elseif os(Linux)
-    let gtkUrl = "https://github.com/TomasLinhart/CGtk-Linux"
+    let gtkPath = "./CGtk/Linux"
 #else
     fatalError("Unsupported platform.")
 #endif
@@ -11,7 +13,13 @@ import PackageDescription
 let package = Package(
   name:  "SwiftGtk",
   dependencies: [
-    .Package(url: gtkUrl, majorVersion: 1, minor: 3)
+    .package(name: "CGtk", path: gtkPath)
   ],
-  exclude: ["Sources/Ancillary Files"]
+  targets: [
+    .target(name: "SwiftGtk"),
+    .executableTarget(
+      name: "Demo",
+      dependencies: ["SwiftGtk"],
+      resources: [.copy("GTK.png")])
+  ]
 )
