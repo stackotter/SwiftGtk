@@ -49,6 +49,10 @@ cd SwiftGtk
 swift run Demo
 ```
 
+### macOS
+
+![macOS](https://github.com/stackotter/SwiftGtk/blob/main/Screenshots/Demo_macOS.png?raw=true)
+
 ## License
 
 All code is licensed under MIT license.
