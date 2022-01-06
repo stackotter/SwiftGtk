@@ -26,7 +26,10 @@ public class ToggleButton: Button {
     override func didMoveToParent() {
         super.didMoveToParent()
 
-        addSignal(name: "toggled") { [unowned self] in self.toggled?(self) }
+        addSignal(name: "toggled") { [weak self] in
+            guard let self = self else { return }
+            self.toggled?(self)
+        }
     }
 
     public var mode: Bool {

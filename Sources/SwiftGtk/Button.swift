@@ -18,7 +18,10 @@ open class Button: Bin {
     override func didMoveToParent() {
         super.didMoveToParent()
 
-        addSignal(name: "clicked") { [unowned self] in self.clicked?(self) }
+        addSignal(name: "clicked") { [weak self] in
+            guard let self = self else { return }
+            self.clicked?(self)
+        }
     }
 
     public var label: String? {
