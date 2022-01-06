@@ -12,6 +12,10 @@ import PackageDescription
 
 let package = Package(
   name:  "SwiftGtk",
+  products: [
+    .executable(name: "Demo", targets: ["Demo"]),
+    .library(name: "SwiftGtk", targets: ["SwiftGtk"])
+  ],
   targets: [
     .systemLibrary(
       name: "CGtk",

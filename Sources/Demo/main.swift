@@ -18,8 +18,8 @@ app.run { window in
 
     let button = Button(label: "Press")
     button.label = "Press Me"
-    button.clicked = { [unowned label] _ in
-        label.text = "Oh, you pressed the button."
+    button.clicked = { [weak label] _ in
+        label?.text = "Oh, you pressed the button."
 
         let newWindow = Window(windowType: .topLevel)
         newWindow.title = "Just a window"
