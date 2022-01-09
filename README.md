@@ -35,6 +35,9 @@ let package = Package(
   name: "GtkHelloWorld",
   dependencies: [
     .package(url: "https://github.com/stackotter/SwiftGtk", .branch("main"))
+  ],
+  targets: [
+    .executableTarget(name: "GtkHelloWorld", dependencies: ["SwiftGtk"])
   ]
 )
 ```
