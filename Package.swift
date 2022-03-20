@@ -14,7 +14,8 @@ let package = Package(
   name:  "SwiftGtk",
   products: [
     .executable(name: "Demo", targets: ["Demo"]),
-    .library(name: "SwiftGtk", targets: ["SwiftGtk"])
+    .library(name: "SwiftGtk", targets: ["SwiftGtk"]),
+    .library(name: "CGtk", targets: ["CGtk"])
   ],
   targets: [
     .systemLibrary(
