@@ -1,12 +1,18 @@
-//
-//  Copyright © 2017 Tomas Linhart. All rights reserved.
-//
-
 import CGtk
 
+/// Whenever a container has some form of natural row it may align children in that row along a common typographical baseline. If the amount of verical space in the row is taller than the total requested height of the baseline-aligned children then it can use a `GtkBaselinePosition` to select where to put the baseline inside the extra availible space.
+///
+/// Available since:	3.10
+/// 
+/// https://docs.gtk.org/gtk3/enum.BaselinePosition.html
 public enum BaselinePosition {
+    /// Align the baseline at the top.
     case top
+
+    /// Center the baseline.
     case center
+
+    /// Align the baseline at the bottom.
     case bottom
 
     func toGtkBaselinePosition() -> GtkBaselinePosition {
@@ -22,7 +28,7 @@ public enum BaselinePosition {
 }
 
 extension GtkBaselinePosition {
-    func toBaselinePosition() -> BaselinePosition {
+    func toBaselinePosition() -> BaselinePosition? {
         switch self {
         case GTK_BASELINE_POSITION_TOP:
             return .top
@@ -31,7 +37,7 @@ extension GtkBaselinePosition {
         case GTK_BASELINE_POSITION_BOTTOM:
             return .bottom
         default:
-            return .center
+            return nil
         }
     }
 }
