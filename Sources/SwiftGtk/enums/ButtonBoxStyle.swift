@@ -51,7 +51,7 @@ extension GtkButtonBoxStyle {
         case GTK_BUTTONBOX_EXPAND:
             return .expand
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkButtonBoxStyle enum value: \(self.rawValue)")
         }
     }
 }

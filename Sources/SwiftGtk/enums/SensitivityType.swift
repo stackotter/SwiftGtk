@@ -33,7 +33,7 @@ extension GtkSensitivityType {
         case GTK_SENSITIVITY_OFF:
             return .off
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkSensitivityType enum value: \(self.rawValue)")
         }
     }
 }

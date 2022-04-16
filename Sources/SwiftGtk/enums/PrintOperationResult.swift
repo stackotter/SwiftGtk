@@ -39,7 +39,7 @@ extension GtkPrintOperationResult {
         case GTK_PRINT_OPERATION_RESULT_IN_PROGRESS:
             return .inProgress
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPrintOperationResult enum value: \(self.rawValue)")
         }
     }
 }

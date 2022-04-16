@@ -111,7 +111,7 @@ extension GtkScrollType {
         case GTK_SCROLL_END:
             return .end
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkScrollType enum value: \(self.rawValue)")
         }
     }
 }

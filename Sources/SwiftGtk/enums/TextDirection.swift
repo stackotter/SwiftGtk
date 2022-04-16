@@ -33,7 +33,7 @@ extension GtkTextDirection {
         case GTK_TEXT_DIR_RTL:
             return .rightToLeft
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkTextDirection enum value: \(self.rawValue)")
         }
     }
 }

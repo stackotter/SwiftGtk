@@ -27,7 +27,7 @@ extension GtkPackType {
         case GTK_PACK_END:
             return .end
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPackType enum value: \(self.rawValue)")
         }
     }
 }

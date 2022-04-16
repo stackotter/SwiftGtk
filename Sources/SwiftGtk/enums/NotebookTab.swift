@@ -23,7 +23,7 @@ extension GtkNotebookTab {
         case GTK_NOTEBOOK_TAB_LAST:
             return .last
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkNotebookTab enum value: \(self.rawValue)")
         }
     }
 }

@@ -39,7 +39,7 @@ extension GtkMenuDirectionType {
         case GTK_MENU_DIR_PREV:
             return .previous
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkMenuDirectionType enum value: \(self.rawValue)")
         }
     }
 }

@@ -55,7 +55,7 @@ extension GtkAssistantPageType {
         case GTK_ASSISTANT_PAGE_CUSTOM:
             return .custom
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkAssistantPageType enum value: \(self.rawValue)")
         }
     }
 }

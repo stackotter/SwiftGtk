@@ -63,7 +63,7 @@ extension GtkShortcutType {
         case GTK_SHORTCUT_GESTURE:
             return .gesture
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkShortcutType enum value: \(self.rawValue)")
         }
     }
 }

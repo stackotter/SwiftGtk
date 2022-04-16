@@ -57,7 +57,7 @@ extension GtkTextWindowType {
         case GTK_TEXT_WINDOW_BOTTOM:
             return .bottom
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkTextWindowType enum value: \(self.rawValue)")
         }
     }
 }

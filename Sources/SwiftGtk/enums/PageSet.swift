@@ -33,7 +33,7 @@ extension GtkPageSet {
         case GTK_PAGE_SET_ODD:
             return .odd
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPageSet enum value: \(self.rawValue)")
         }
     }
 }

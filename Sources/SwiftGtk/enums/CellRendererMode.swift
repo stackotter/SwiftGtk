@@ -33,7 +33,7 @@ extension GtkCellRendererMode {
         case GTK_CELL_RENDERER_MODE_EDITABLE:
             return .editable
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkCellRendererMode enum value: \(self.rawValue)")
         }
     }
 }

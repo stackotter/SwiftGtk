@@ -27,7 +27,7 @@ extension GtkSortType {
         case GTK_SORT_DESCENDING:
             return .descending
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkSortType enum value: \(self.rawValue)")
         }
     }
 }

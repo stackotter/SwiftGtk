@@ -45,7 +45,7 @@ extension GtkMessageType {
         case GTK_MESSAGE_OTHER:
             return .other
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkMessageType enum value: \(self.rawValue)")
         }
     }
 }

@@ -39,7 +39,7 @@ extension GtkWrapMode {
         case GTK_WRAP_WORD_CHAR:
             return .wordCharacter
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkWrapMode enum value: \(self.rawValue)")
         }
     }
 }

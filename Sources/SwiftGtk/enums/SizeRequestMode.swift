@@ -33,7 +33,7 @@ extension GtkSizeRequestMode {
         case GTK_SIZE_REQUEST_CONSTANT_SIZE:
             return .constantSize
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkSizeRequestMode enum value: \(self.rawValue)")
         }
     }
 }

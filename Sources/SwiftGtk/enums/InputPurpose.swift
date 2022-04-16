@@ -89,7 +89,7 @@ extension GtkInputPurpose {
         case GTK_INPUT_PURPOSE_TERMINAL:
             return .terminal
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkInputPurpose enum value: \(self.rawValue)")
         }
     }
 }

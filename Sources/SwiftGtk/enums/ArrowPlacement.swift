@@ -33,7 +33,7 @@ extension GtkArrowPlacement {
         case GTK_ARROWS_END:
             return .end
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkArrowPlacement enum value: \(self.rawValue)")
         }
     }
 }

@@ -39,7 +39,7 @@ extension GtkTreeViewGridLines {
         case GTK_TREE_VIEW_GRID_LINES_BOTH:
             return .both
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkTreeViewGridLines enum value: \(self.rawValue)")
         }
     }
 }

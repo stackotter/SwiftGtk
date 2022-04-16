@@ -47,7 +47,7 @@ extension GtkShadowType {
         case GTK_SHADOW_ETCHED_OUT:
             return .etchedOut
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkShadowType enum value: \(self.rawValue)")
         }
     }
 }

@@ -39,7 +39,7 @@ extension GtkJustification {
         case GTK_JUSTIFY_FILL:
             return .fill
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkJustification enum value: \(self.rawValue)")
         }
     }
 }

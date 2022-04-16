@@ -39,7 +39,7 @@ extension GtkTreeViewDropPosition {
         case GTK_TREE_VIEW_DROP_INTO_OR_AFTER:
             return .intoOrAfter
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkTreeViewDropPosition enum value: \(self.rawValue)")
         }
     }
 }

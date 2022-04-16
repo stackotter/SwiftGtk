@@ -5,7 +5,7 @@ import CGtk
 /// [Gtk docs](https://docs.gtk.org/gtk3/enum.DeleteType.html)
 public enum DeleteType {
     /// Delete characters.
-    case chars
+    case characters
     /// Delete only the portion of the word to the left/right of cursor if we’re in the middle of a word.
     case wordEnds
     /// Delete words.
@@ -23,7 +23,7 @@ public enum DeleteType {
 
     func toGtkDeleteType() -> GtkDeleteType {
         switch self {
-        case .chars:
+        case .characters:
             return GTK_DELETE_CHARS
         case .wordEnds:
             return GTK_DELETE_WORD_ENDS
@@ -47,7 +47,7 @@ extension GtkDeleteType {
     func toDeleteType() -> DeleteType {
         switch self {
         case GTK_DELETE_CHARS:
-            return .chars
+            return .characters
         case GTK_DELETE_WORD_ENDS:
             return .wordEnds
         case GTK_DELETE_WORDS:
@@ -63,7 +63,7 @@ extension GtkDeleteType {
         case GTK_DELETE_WHITESPACE:
             return .whitespace
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkDeleteType enum value: \(self.rawValue)")
         }
     }
 }

@@ -39,7 +39,7 @@ extension GtkPrintOperationAction {
         case GTK_PRINT_OPERATION_ACTION_EXPORT:
             return .export
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPrintOperationAction enum value: \(self.rawValue)")
         }
     }
 }

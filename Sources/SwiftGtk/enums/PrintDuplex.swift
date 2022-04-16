@@ -33,7 +33,7 @@ extension GtkPrintDuplex {
         case GTK_PRINT_DUPLEX_VERTICAL:
             return .vertical
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPrintDuplex enum value: \(self.rawValue)")
         }
     }
 }

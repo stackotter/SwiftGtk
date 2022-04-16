@@ -57,7 +57,7 @@ extension GtkSpinType {
         case GTK_SPIN_USER_DEFINED:
             return .userDefined
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkSpinType enum value: \(self.rawValue)")
         }
     }
 }

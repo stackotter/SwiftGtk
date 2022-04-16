@@ -33,7 +33,7 @@ extension GtkButtonRole {
         case GTK_BUTTON_ROLE_RADIO:
             return .radio
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkButtonRole enum value: \(self.rawValue)")
         }
     }
 }

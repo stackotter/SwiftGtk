@@ -35,7 +35,7 @@ extension GtkBaselinePosition {
         case GTK_BASELINE_POSITION_BOTTOM:
             return .bottom
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkBaselinePosition enum value: \(self.rawValue)")
         }
     }
 }

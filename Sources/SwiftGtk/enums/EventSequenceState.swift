@@ -33,7 +33,7 @@ extension GtkEventSequenceState {
         case GTK_EVENT_SEQUENCE_DENIED:
             return .denied
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkEventSequenceState enum value: \(self.rawValue)")
         }
     }
 }

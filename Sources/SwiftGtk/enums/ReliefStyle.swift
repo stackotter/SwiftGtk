@@ -33,7 +33,7 @@ extension GtkReliefStyle {
         case GTK_RELIEF_NONE:
             return ReliefStyle.none
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkReliefStyle enum value: \(self.rawValue)")
         }
     }
 }

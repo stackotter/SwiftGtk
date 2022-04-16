@@ -39,7 +39,7 @@ extension GtkPrintQuality {
         case GTK_PRINT_QUALITY_DRAFT:
             return .draft
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPrintQuality enum value: \(self.rawValue)")
         }
     }
 }

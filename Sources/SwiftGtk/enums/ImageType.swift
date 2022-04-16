@@ -17,7 +17,7 @@ public enum ImageType {
     /// The widget contains a named icon. This image type was added in GTK+ 2.6.
     case iconName
     /// The widget contains a GIcon. This image type was added in GTK+ 2.14.
-    case gicon
+    case gIcon
     /// The widget contains a #cairo_surface_t. This image type was added in GTK+ 3.10.
     case surface
 
@@ -35,7 +35,7 @@ public enum ImageType {
             return GTK_IMAGE_ANIMATION
         case .iconName:
             return GTK_IMAGE_ICON_NAME
-        case .gicon:
+        case .gIcon:
             return GTK_IMAGE_GICON
         case .surface:
             return GTK_IMAGE_SURFACE
@@ -59,11 +59,11 @@ extension GtkImageType {
         case GTK_IMAGE_ICON_NAME:
             return .iconName
         case GTK_IMAGE_GICON:
-            return .gicon
+            return .gIcon
         case GTK_IMAGE_SURFACE:
             return .surface
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkImageType enum value: \(self.rawValue)")
         }
     }
 }

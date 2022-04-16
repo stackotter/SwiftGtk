@@ -39,7 +39,7 @@ extension GtkFileChooserAction {
         case GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER:
             return .createFolder
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkFileChooserAction enum value: \(self.rawValue)")
         }
     }
 }

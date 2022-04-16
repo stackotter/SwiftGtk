@@ -33,7 +33,7 @@ extension GtkTreeViewColumnSizing {
         case GTK_TREE_VIEW_COLUMN_FIXED:
             return .fixed
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkTreeViewColumnSizing enum value: \(self.rawValue)")
         }
     }
 }

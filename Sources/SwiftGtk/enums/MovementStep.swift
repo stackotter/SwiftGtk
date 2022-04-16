@@ -73,7 +73,7 @@ extension GtkMovementStep {
         case GTK_MOVEMENT_HORIZONTAL_PAGES:
             return .horizontalPages
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkMovementStep enum value: \(self.rawValue)")
         }
     }
 }

@@ -39,7 +39,7 @@ extension GtkTextViewLayer {
         case GTK_TEXT_VIEW_LAYER_ABOVE_TEXT:
             return .aboveText
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkTextViewLayer enum value: \(self.rawValue)")
         }
     }
 }

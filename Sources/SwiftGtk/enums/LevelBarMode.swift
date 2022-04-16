@@ -29,7 +29,7 @@ extension GtkLevelBarMode {
         case GTK_LEVEL_BAR_MODE_DISCRETE:
             return .discrete
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkLevelBarMode enum value: \(self.rawValue)")
         }
     }
 }

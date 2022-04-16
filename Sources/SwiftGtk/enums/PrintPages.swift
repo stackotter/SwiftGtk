@@ -39,7 +39,7 @@ extension GtkPrintPages {
         case GTK_PRINT_PAGES_SELECTION:
             return .selection
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPrintPages enum value: \(self.rawValue)")
         }
     }
 }

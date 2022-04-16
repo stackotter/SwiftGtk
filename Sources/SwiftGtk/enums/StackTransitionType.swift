@@ -137,7 +137,7 @@ extension GtkStackTransitionType {
         case GTK_STACK_TRANSITION_TYPE_OVER_RIGHT_LEFT:
             return .overRightLeft
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkStackTransitionType enum value: \(self.rawValue)")
         }
     }
 }

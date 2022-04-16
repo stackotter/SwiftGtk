@@ -27,7 +27,7 @@ extension GtkTextExtendSelection {
         case GTK_TEXT_EXTEND_SELECTION_LINE:
             return .line
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkTextExtendSelection enum value: \(self.rawValue)")
         }
     }
 }

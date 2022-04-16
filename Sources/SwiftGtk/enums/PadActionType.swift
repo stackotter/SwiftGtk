@@ -33,7 +33,7 @@ extension GtkPadActionType {
         case GTK_PAD_ACTION_STRIP:
             return .strip
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPadActionType enum value: \(self.rawValue)")
         }
     }
 }

@@ -45,7 +45,7 @@ extension GtkWindowPosition {
         case GTK_WIN_POS_CENTER_ON_PARENT:
             return .centerOnParent
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkWindowPosition enum value: \(self.rawValue)")
         }
     }
 }

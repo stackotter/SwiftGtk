@@ -39,7 +39,7 @@ extension GtkCornerType {
         case GTK_CORNER_BOTTOM_RIGHT:
             return .bottomRight
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkCornerType enum value: \(self.rawValue)")
         }
     }
 }

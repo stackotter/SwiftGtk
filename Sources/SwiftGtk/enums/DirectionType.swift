@@ -51,7 +51,7 @@ extension GtkDirectionType {
         case GTK_DIR_RIGHT:
             return .right
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkDirectionType enum value: \(self.rawValue)")
         }
     }
 }

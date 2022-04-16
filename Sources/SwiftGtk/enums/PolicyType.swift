@@ -39,7 +39,7 @@ extension GtkPolicyType {
         case GTK_POLICY_EXTERNAL:
             return .external
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPolicyType enum value: \(self.rawValue)")
         }
     }
 }

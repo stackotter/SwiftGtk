@@ -35,7 +35,7 @@ extension GtkTextBufferTargetInfo {
         case GTK_TEXT_BUFFER_TARGET_INFO_TEXT:
             return .text
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkTextBufferTargetInfo enum value: \(self.rawValue)")
         }
     }
 }

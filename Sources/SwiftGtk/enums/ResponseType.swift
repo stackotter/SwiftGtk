@@ -81,7 +81,7 @@ extension GtkResponseType {
         case GTK_RESPONSE_HELP:
             return .help
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkResponseType enum value: \(self.rawValue)")
         }
     }
 }

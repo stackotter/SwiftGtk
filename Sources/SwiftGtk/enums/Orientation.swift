@@ -27,7 +27,7 @@ extension GtkOrientation {
         case GTK_ORIENTATION_VERTICAL:
             return .vertical
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkOrientation enum value: \(self.rawValue)")
         }
     }
 }

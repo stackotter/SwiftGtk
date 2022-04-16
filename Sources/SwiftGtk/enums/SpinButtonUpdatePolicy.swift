@@ -27,7 +27,7 @@ extension GtkSpinButtonUpdatePolicy {
         case GTK_UPDATE_IF_VALID:
             return .ifValid
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkSpinButtonUpdatePolicy enum value: \(self.rawValue)")
         }
     }
 }

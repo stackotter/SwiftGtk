@@ -31,7 +31,7 @@ extension GtkWindowType {
         case GTK_WINDOW_POPUP:
             return .popUp
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkWindowType enum value: \(self.rawValue)")
         }
     }
 }

@@ -49,7 +49,7 @@ extension GtkScrollStep {
         case GTK_SCROLL_HORIZONTAL_ENDS:
             return .horizontalEnds
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkScrollStep enum value: \(self.rawValue)")
         }
     }
 }

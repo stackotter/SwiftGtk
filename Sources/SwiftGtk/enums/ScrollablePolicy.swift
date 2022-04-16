@@ -27,7 +27,7 @@ extension GtkScrollablePolicy {
         case GTK_SCROLL_NATURAL:
             return .natural
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkScrollablePolicy enum value: \(self.rawValue)")
         }
     }
 }

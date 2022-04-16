@@ -73,7 +73,7 @@ extension GtkCssSectionType {
         case GTK_CSS_SECTION_KEYFRAMES:
             return .keyFrames
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkCssSectionType enum value: \(self.rawValue)")
         }
     }
 }

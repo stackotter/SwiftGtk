@@ -39,7 +39,7 @@ extension GtkPanDirection {
         case GTK_PAN_DIRECTION_DOWN:
             return .down
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPanDirection enum value: \(self.rawValue)")
         }
     }
 }

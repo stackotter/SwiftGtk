@@ -51,7 +51,7 @@ extension GtkDragResult {
         case GTK_DRAG_RESULT_ERROR:
             return .error
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkDragResult enum value: \(self.rawValue)")
         }
     }
 }

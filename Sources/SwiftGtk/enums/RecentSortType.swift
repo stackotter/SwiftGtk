@@ -39,7 +39,7 @@ extension GtkRecentSortType {
         case GTK_RECENT_SORT_CUSTOM:
             return .custom
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkRecentSortType enum value: \(self.rawValue)")
         }
     }
 }

@@ -39,7 +39,7 @@ extension GtkExpanderStyle {
         case GTK_EXPANDER_EXPANDED:
             return .expanded
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkExpanderStyle enum value: \(self.rawValue)")
         }
     }
 }

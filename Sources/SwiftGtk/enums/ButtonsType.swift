@@ -53,7 +53,7 @@ extension GtkButtonsType {
         case GTK_BUTTONS_OK_CANCEL:
             return .okAndCancel
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkButtonsType enum value: \(self.rawValue)")
         }
     }
 }

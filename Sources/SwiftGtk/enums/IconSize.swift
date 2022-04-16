@@ -15,9 +15,9 @@ public enum IconSize {
     /// Size appropriate for buttons (16px)
     case button
     /// Size appropriate for drag and drop (32px).
-    case dnd
+    case dragAndDrop
     /// Size appropriate for dialogs (48px).
-    case diaglog
+    case dialog
 
     func toGtkIconSize() -> GtkIconSize {
         switch self {
@@ -31,9 +31,9 @@ public enum IconSize {
             return GTK_ICON_SIZE_LARGE_TOOLBAR
         case .button:
             return GTK_ICON_SIZE_BUTTON
-        case .dnd:
+        case .dragAndDrop:
             return GTK_ICON_SIZE_DND
-        case .diaglog:
+        case .dialog:
             return GTK_ICON_SIZE_DIALOG
         }
     }
@@ -53,11 +53,11 @@ extension GtkIconSize {
         case GTK_ICON_SIZE_BUTTON:
             return .button
         case GTK_ICON_SIZE_DND:
-            return .dnd
+            return .dragAndDrop
         case GTK_ICON_SIZE_DIALOG:
-            return .diaglog
+            return .dialog
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkIconSize enum value: \(self.rawValue)")
         }
     }
 }

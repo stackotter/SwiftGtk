@@ -39,7 +39,7 @@ extension GtkPageOrientation {
         case GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE:
             return .reverseLandscape
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPageOrientation enum value: \(self.rawValue)")
         }
     }
 }

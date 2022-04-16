@@ -39,7 +39,7 @@ extension GtkSelectionMode {
         case GTK_SELECTION_MULTIPLE:
             return .multiple
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkSelectionMode enum value: \(self.rawValue)")
         }
     }
 }

@@ -31,7 +31,7 @@ extension GtkResizeMode {
         case GTK_RESIZE_IMMEDIATE:
             return .immediate
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkResizeMode enum value: \(self.rawValue)")
         }
     }
 }

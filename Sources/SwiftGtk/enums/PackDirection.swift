@@ -39,7 +39,7 @@ extension GtkPackDirection {
         case GTK_PACK_DIRECTION_BTT:
             return .bottomToTop
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPackDirection enum value: \(self.rawValue)")
         }
     }
 }

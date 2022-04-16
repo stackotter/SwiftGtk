@@ -51,7 +51,7 @@ extension GtkAlign {
         case GTK_ALIGN_BASELINE:
             return .baseline
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkAlign enum value: \(self.rawValue)")
         }
     }
 }

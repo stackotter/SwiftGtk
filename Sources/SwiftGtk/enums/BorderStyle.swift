@@ -75,7 +75,7 @@ extension GtkBorderStyle {
         case GTK_BORDER_STYLE_RIDGE:
             return .ridge
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkBorderStyle enum value: \(self.rawValue)")
         }
     }
 }

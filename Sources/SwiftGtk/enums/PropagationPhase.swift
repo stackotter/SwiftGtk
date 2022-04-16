@@ -39,7 +39,7 @@ extension GtkPropagationPhase {
         case GTK_PHASE_TARGET:
             return .target
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPropagationPhase enum value: \(self.rawValue)")
         }
     }
 }

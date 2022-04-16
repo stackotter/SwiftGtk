@@ -27,7 +27,7 @@ extension GtkPopoverConstraint {
         case GTK_POPOVER_CONSTRAINT_WINDOW:
             return .window
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPopoverConstraint enum value: \(self.rawValue)")
         }
     }
 }

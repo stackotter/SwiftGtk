@@ -27,7 +27,7 @@ extension GtkEntryIconPosition {
         case GTK_ENTRY_ICON_SECONDARY:
             return .secondary
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkEntryIconPosition enum value: \(self.rawValue)")
         }
     }
 }

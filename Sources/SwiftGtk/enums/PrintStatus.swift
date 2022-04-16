@@ -69,7 +69,7 @@ extension GtkPrintStatus {
         case GTK_PRINT_STATUS_FINISHED_ABORTED:
             return .finishedAborted
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPrintStatus enum value: \(self.rawValue)")
         }
     }
 }

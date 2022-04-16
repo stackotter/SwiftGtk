@@ -55,7 +55,7 @@ extension GtkNumberUpLayout {
         case GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT:
             return .bottomToTopRightToLeft
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkNumberUpLayout enum value: \(self.rawValue)")
         }
     }
 }

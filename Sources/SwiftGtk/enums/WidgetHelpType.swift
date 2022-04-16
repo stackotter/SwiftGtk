@@ -27,7 +27,7 @@ extension GtkWidgetHelpType {
         case GTK_WIDGET_HELP_WHATS_THIS:
             return .whatsThis
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkWidgetHelpType enum value: \(self.rawValue)")
         }
     }
 }

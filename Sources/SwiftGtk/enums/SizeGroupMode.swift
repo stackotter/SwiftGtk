@@ -39,7 +39,7 @@ extension GtkSizeGroupMode {
         case GTK_SIZE_GROUP_BOTH:
             return .both
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkSizeGroupMode enum value: \(self.rawValue)")
         }
     }
 }

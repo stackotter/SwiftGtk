@@ -39,7 +39,7 @@ extension GtkPositionType {
         case GTK_POS_BOTTOM:
             return .bottom
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkPositionType enum value: \(self.rawValue)")
         }
     }
 }

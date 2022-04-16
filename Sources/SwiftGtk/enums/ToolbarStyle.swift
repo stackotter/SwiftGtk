@@ -39,7 +39,7 @@ extension GtkToolbarStyle {
         case GTK_TOOLBAR_BOTH_HORIZ:
             return .bothHorizontal
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkToolbarStyle enum value: \(self.rawValue)")
         }
     }
 }

@@ -51,7 +51,7 @@ extension GtkRevealerTransitionType {
         case GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN:
             return .slideDown
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkRevealerTransitionType enum value: \(self.rawValue)")
         }
     }
 }

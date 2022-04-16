@@ -39,7 +39,7 @@ extension GtkUnit {
         case GTK_UNIT_MM:
             return .millimeters
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkUnit enum value: \(self.rawValue)")
         }
     }
 }

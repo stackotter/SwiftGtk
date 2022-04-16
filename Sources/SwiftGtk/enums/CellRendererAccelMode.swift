@@ -27,7 +27,7 @@ extension GtkCellRendererAccelMode {
         case GTK_CELL_RENDERER_ACCEL_MODE_OTHER:
             return .other
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkCellRendererAccelMode enum value: \(self.rawValue)")
         }
     }
 }

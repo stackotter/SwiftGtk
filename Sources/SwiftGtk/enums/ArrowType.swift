@@ -45,7 +45,7 @@ extension GtkArrowType {
         case GTK_ARROW_NONE:
             return ArrowType.none
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkArrowType enum value: \(self.rawValue)")
         }
     }
 }

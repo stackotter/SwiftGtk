@@ -33,7 +33,7 @@ extension GtkFileChooserConfirmation {
         case GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN:
             return .selectAgain
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkFileChooserConfirmation enum value: \(self.rawValue)")
         }
     }
 }

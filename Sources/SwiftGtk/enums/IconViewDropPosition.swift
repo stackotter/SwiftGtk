@@ -51,7 +51,7 @@ extension GtkIconViewDropPosition {
         case GTK_ICON_VIEW_DROP_BELOW:
             return .dropBelow
         default:
-            fatalError("Unexpected enum value")
+            fatalError("Unsupported GtkIconViewDropPosition enum value: \(self.rawValue)")
         }
     }
 }
