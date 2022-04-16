@@ -105,7 +105,7 @@ public class Grid: Container {
     }
 
     public func getRowBaselinePosition(forRow row: Int) -> BaselinePosition {
-        return gtk_grid_get_row_baseline_position(castedPointer(), gint(row)).toBaselinePosition() ?? .center
+        return gtk_grid_get_row_baseline_position(castedPointer(), gint(row)).toBaselinePosition()
     }
 
     public func setRowBaselinePosition(forRow row: Int, position: BaselinePosition) {
