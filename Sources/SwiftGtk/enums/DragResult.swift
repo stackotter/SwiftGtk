@@ -2,23 +2,18 @@ import CGtk
 
 /// Gives an indication why a drag operation failed. The value can by obtained by connecting to the `GtkWidget::drag-failed` signal.
 ///
-/// https://docs.gtk.org/gtk3/enum.DragResult.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.DragResult.html)
 public enum DragResult {
     /// The drag operation was successful.
     case success
-
     /// No suitable drag target.
     case noTarget
-
     /// The user cancelled the drag operation.
     case userCancelled
-
     /// The drag operation timed out.
     case timeoutExpired
-
     /// The pointer or keyboard grab used for the drag operation was broken.
     case grabBroken
-
     /// The drag operation failed due to some unspecified error.
     case error
 
@@ -41,7 +36,7 @@ public enum DragResult {
 }
 
 extension GtkDragResult {
-    func toDragResult() -> DragResult? {
+    func toDragResult() -> DragResult {
         switch self {
         case GTK_DRAG_RESULT_SUCCESS:
             return .success
@@ -56,7 +51,7 @@ extension GtkDragResult {
         case GTK_DRAG_RESULT_ERROR:
             return .error
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

@@ -2,17 +2,14 @@ import CGtk
 
 /// See also `gtk_print_job_set_pages()`
 /// 
-/// https://docs.gtk.org/gtk3/enum.PrintPages.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.PrintPages.html)
 public enum PrintPages {
     /// All pages.
     case all
-
     /// Current page.
     case current
-
     /// Range of pages.
     case ranges
-
     /// Selected pages.
     case selection
 
@@ -31,7 +28,7 @@ public enum PrintPages {
 }
 
 extension GtkPrintPages {
-    func toPrintPages() -> PrintPages? {
+    func toPrintPages() -> PrintPages {
         switch self {
         case GTK_PRINT_PAGES_ALL:
             return .all
@@ -42,7 +39,7 @@ extension GtkPrintPages {
         case GTK_PRINT_PAGES_SELECTION:
             return .selection
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

@@ -2,17 +2,14 @@ import CGtk
 
 /// The action parameter to `gtk_print_operation_run()` determines what action the print operation should perform.
 /// 
-/// https://docs.gtk.org/gtk3/enum.PrintOperationAction.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.PrintOperationAction.html)
 public enum PrintOperationAction {
     /// Show the print dialog.
     case printDialog
-
     /// Start to print without showing the print dialog, based on the current print settings.
     case print
-
     /// Show the print preview.
     case preview
-
     /// Export to a file. This requires the export-filename property to be set.
     case export
 
@@ -31,7 +28,7 @@ public enum PrintOperationAction {
 }
 
 extension GtkPrintOperationAction {
-    func toPrintOperationAction() -> PrintOperationAction? {
+    func toPrintOperationAction() -> PrintOperationAction {
         switch self {
         case GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG:
             return .printDialog
@@ -42,7 +39,7 @@ extension GtkPrintOperationAction {
         case GTK_PRINT_OPERATION_ACTION_EXPORT:
             return .export
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

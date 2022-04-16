@@ -1,22 +1,17 @@
 import CGtk
 
-/// https://docs.gtk.org/gtk3/enum.ScrollStep.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.ScrollStep.html)
 public enum ScrollStep {
     /// Scroll in steps.
     case steps
-
     /// Scroll by pages.
     case pages
-
     /// Scroll to ends.
     case ends
-
     /// Scroll in horizontal steps.
     case horizontalSteps
-
     /// Scroll by horizontal pages.
     case horizontalPages
-
     /// Scroll to the horizontal ends.
     case horizontalEnds
 
@@ -39,7 +34,7 @@ public enum ScrollStep {
 }
 
 extension GtkScrollStep {
-    func toScrollStep() -> ScrollStep? {
+    func toScrollStep() -> ScrollStep {
         switch self {
         case GTK_SCROLL_STEPS:
             return .steps
@@ -54,7 +49,7 @@ extension GtkScrollStep {
         case GTK_SCROLL_HORIZONTAL_ENDS:
             return .horizontalEnds
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

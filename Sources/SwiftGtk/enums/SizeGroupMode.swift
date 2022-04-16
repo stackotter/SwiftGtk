@@ -2,17 +2,14 @@ import CGtk
 
 /// The mode of the size group determines the directions in which the size group affects the requested sizes of its component widgets.
 /// 
-/// https://docs.gtk.org/gtk3/enum.SizeGroupMode.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.SizeGroupMode.html)
 public enum SizeGroupMode {
     /// Group has no effect.
     case none
-
     /// Group affects horizontal requisition.
     case horizontal
-
     /// Group affects vertical requisition.
     case vertical
-
     /// Group affects both horizontal and vertical requisition.
     case both
 
@@ -31,7 +28,7 @@ public enum SizeGroupMode {
 }
 
 extension GtkSizeGroupMode {
-    func toSizeGroupMode() -> SizeGroupMode? {
+    func toSizeGroupMode() -> SizeGroupMode {
         switch self {
         case GTK_SIZE_GROUP_NONE:
             return SizeGroupMode.none
@@ -42,7 +39,7 @@ extension GtkSizeGroupMode {
         case GTK_SIZE_GROUP_BOTH:
             return .both
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

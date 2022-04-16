@@ -2,29 +2,22 @@ import CGtk
 
 /// See also: `GtkEntry::delete-from-cursor`.
 ///
-/// https://docs.gtk.org/gtk3/enum.DeleteType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.DeleteType.html)
 public enum DeleteType {
     /// Delete characters.
     case chars
-
     /// Delete only the portion of the word to the left/right of cursor if we’re in the middle of a word.
     case wordEnds
-
     /// Delete words.
     case words
-
     /// Delete display-lines. Display-lines refers to the visible lines, with respect to to the current line breaks. As opposed to paragraphs, which are defined by line breaks in the input.
     case displayLines
-
     /// Delete only the portion of the display-line to the left/right of cursor.
     case displayLineEnds
-
     /// Delete to the end of the paragraph. Like C-k in Emacs (or its reverse).
     case paragraphEnds
-
     /// Delete entire line. Like C-k in pico.
     case paragraphs
-
     /// Delete only whitespace. Like M-\ in Emacs.
     case whitespace
 
@@ -51,7 +44,7 @@ public enum DeleteType {
 }
 
 extension GtkDeleteType {
-    func toDeleteType() -> DeleteType? {
+    func toDeleteType() -> DeleteType {
         switch self {
         case GTK_DELETE_CHARS:
             return .chars
@@ -70,7 +63,7 @@ extension GtkDeleteType {
         case GTK_DELETE_WHITESPACE:
             return .whitespace
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

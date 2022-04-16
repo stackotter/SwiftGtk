@@ -2,29 +2,22 @@ import CGtk
 
 /// Describes the image data representation used by a `GtkImage`. If you want to get the image from the widget, you can only get the currently-stored representation. e.g. if the `gtk_image_get_storage_type()` returns #GTK_IMAGE_PIXBUF, then you can call `gtk_image_get_pixbuf()` but not `gtk_image_get_stock()`. For empty images, you can request any storage type (call any of the “get” functions), but they will all return `NULL` values.
 /// 
-/// https://docs.gtk.org/gtk3/enum.ImageType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.ImageType.html)
 public enum ImageType {
     /// There is no image displayed by the widget.
     case empty
-
     /// The widget contains a `GdkPixbuf`.
     case pixbuf
-
     /// The widget contains a [stock item name][gtkstock]
     case stock
-
     /// The widget contains a `GtkIconSet`.
     case iconSet
-
     /// The widget contains a `GdkPixbufAnimation`.
     case animation
-
     /// The widget contains a named icon. This image type was added in GTK+ 2.6.
     case iconName
-
     /// The widget contains a GIcon. This image type was added in GTK+ 2.14.
     case gicon
-
     /// The widget contains a #cairo_surface_t. This image type was added in GTK+ 3.10.
     case surface
 
@@ -51,7 +44,7 @@ public enum ImageType {
 }
 
 extension GtkImageType {
-    func toImageType() -> ImageType? {
+    func toImageType() -> ImageType {
         switch self {
         case GTK_IMAGE_EMPTY:
             return .empty
@@ -70,7 +63,7 @@ extension GtkImageType {
         case GTK_IMAGE_SURFACE:
             return .surface
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

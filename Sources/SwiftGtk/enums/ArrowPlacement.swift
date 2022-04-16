@@ -2,14 +2,12 @@ import CGtk
 
 /// Used to specify the placement of scroll arrows in scrolling menus.
 ///
-/// https://docs.gtk.org/gtk3/enum.ArrowPlacement.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.ArrowPlacement.html)
 public enum ArrowPlacement {
     /// Place one arrow on each end of the menu.
     case both
-
     /// Place both arrows at the top of the menu.
     case start
-
     /// Place both arrows at the bottom of the menu.
     case end
 
@@ -26,7 +24,7 @@ public enum ArrowPlacement {
 }
 
 extension GtkArrowPlacement {
-    func toArrowPlacement() -> ArrowPlacement? {
+    func toArrowPlacement() -> ArrowPlacement {
         switch self {
         case GTK_ARROWS_BOTH:
             return .both
@@ -35,7 +33,7 @@ extension GtkArrowPlacement {
         case GTK_ARROWS_END:
             return .end
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

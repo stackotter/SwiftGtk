@@ -2,17 +2,14 @@ import CGtk
 
 /// A value of this type is returned by gtk_print_operation_run().
 /// 
-/// https://docs.gtk.org/gtk3/enum.PrintOperationResult.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.PrintOperationResult.html)
 public enum PrintOperationResult {
     /// An error has occurred.
     case error
-
     /// The print settings should be stored.
     case apply
-
     /// The print operation has been canceled, the print settings should not be stored.
     case cancel
-
     /// The print operation is not complete yet. This value will only be returned when running asynchronously.
     case inProgress
 
@@ -31,7 +28,7 @@ public enum PrintOperationResult {
 }
 
 extension GtkPrintOperationResult {
-    func toPrintOperationResult() -> PrintOperationResult? {
+    func toPrintOperationResult() -> PrintOperationResult {
         switch self {
         case GTK_PRINT_OPERATION_RESULT_ERROR:
             return .error
@@ -42,7 +39,7 @@ extension GtkPrintOperationResult {
         case GTK_PRINT_OPERATION_RESULT_IN_PROGRESS:
             return .inProgress
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

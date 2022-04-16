@@ -4,14 +4,12 @@ import CGtk
 ///
 /// Available since:	3.10
 /// 
-/// https://docs.gtk.org/gtk3/enum.BaselinePosition.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.BaselinePosition.html)
 public enum BaselinePosition {
     /// Align the baseline at the top.
     case top
-
     /// Center the baseline.
     case center
-
     /// Align the baseline at the bottom.
     case bottom
 
@@ -28,7 +26,7 @@ public enum BaselinePosition {
 }
 
 extension GtkBaselinePosition {
-    func toBaselinePosition() -> BaselinePosition? {
+    func toBaselinePosition() -> BaselinePosition {
         switch self {
         case GTK_BASELINE_POSITION_TOP:
             return .top
@@ -37,7 +35,7 @@ extension GtkBaselinePosition {
         case GTK_BASELINE_POSITION_BOTTOM:
             return .bottom
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

@@ -2,11 +2,10 @@ import CGtk
 
 /// Determines the direction of a sort.
 /// 
-/// https://docs.gtk.org/gtk3/enum.SortType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.SortType.html)
 public enum SortType {
     /// Sorting is in ascending order.
     case ascending
-
     /// Sorting is in descending order.
     case descending
 
@@ -21,14 +20,14 @@ public enum SortType {
 }
 
 extension GtkSortType {
-    func toSortType() -> SortType? {
+    func toSortType() -> SortType {
         switch self {
         case GTK_SORT_ASCENDING:
             return .ascending
         case GTK_SORT_DESCENDING:
             return .descending
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

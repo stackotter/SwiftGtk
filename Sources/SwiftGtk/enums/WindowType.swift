@@ -6,33 +6,32 @@ import CGtk
 /// 
 /// keybindings won’t work on them, the window manager won’t decorate the window with a frame, many GTK+ features that rely on the window manager will not work (e.g. resize grips and maximization/minimization). #GTK_WINDOW_POPUP is used to implement widgets such as GtkMenu or tooltips that you normally don’t think of as windows per se. Nearly all windows should be #GTK_WINDOW_TOPLEVEL. In particular, do not use #GTK_WINDOW_POPUP just to turn off the window borders; use gtk_window_set_decorated() for that.
 /// 
-/// https://docs.gtk.org/gtk3/enum.WindowType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.WindowType.html)
 public enum WindowType {
     /// A regular window, such as a dialog.
     case topLevel
-
     /// A special window such as a tooltip.
-    case popup
+    case popUp
 
     func toGtkWindowType() -> GtkWindowType {
         switch self {
         case .topLevel:
             return GTK_WINDOW_TOPLEVEL
-        case .popup:
+        case .popUp:
             return GTK_WINDOW_POPUP
         }
     }
 }
 
 extension GtkWindowType {
-    func toWindowType() -> WindowType? {
+    func toWindowType() -> WindowType {
         switch self {
         case GTK_WINDOW_TOPLEVEL:
             return .topLevel
         case GTK_WINDOW_POPUP:
-            return .popup
+            return .popUp
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

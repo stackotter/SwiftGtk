@@ -2,40 +2,38 @@ import CGtk
 
 /// Reading directions for text.
 /// 
-/// https://docs.gtk.org/gtk3/enum.TextDirection.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.TextDirection.html)
 public enum TextDirection {
     /// No direction.
     case none
-
     /// Left to right text direction.
-    case ltr
-
+    case leftToRight
     /// Right to left text direction.
-    case rtl
+    case rightToLeft
 
     func toGtkTextDirection() -> GtkTextDirection {
         switch self {
         case .none:
             return GTK_TEXT_DIR_NONE
-        case .ltr:
+        case .leftToRight:
             return GTK_TEXT_DIR_LTR
-        case .rtl:
+        case .rightToLeft:
             return GTK_TEXT_DIR_RTL
         }
     }
 }
 
 extension GtkTextDirection {
-    func toTextDirection() -> TextDirection? {
+    func toTextDirection() -> TextDirection {
         switch self {
         case GTK_TEXT_DIR_NONE:
             return TextDirection.none
         case GTK_TEXT_DIR_LTR:
-            return .ltr
+            return .leftToRight
         case GTK_TEXT_DIR_RTL:
-            return .rtl
+            return .rightToLeft
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

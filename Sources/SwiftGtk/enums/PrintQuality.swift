@@ -2,17 +2,14 @@ import CGtk
 
 /// See also `gtk_print_settings_set_quality()`.
 /// 
-/// https://docs.gtk.org/gtk3/enum.PrintQuality.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.PrintQuality.html)
 public enum PrintQuality {
     /// Low quality.
     case low
-
     /// Normal quality.
     case normal
-
     /// High quality.
     case high
-
     /// Draft quality.
     case draft
 
@@ -31,7 +28,7 @@ public enum PrintQuality {
 }
 
 extension GtkPrintQuality {
-    func toPrintQuality() -> PrintQuality? {
+    func toPrintQuality() -> PrintQuality {
         switch self {
         case GTK_PRINT_QUALITY_LOW:
             return .low
@@ -42,7 +39,7 @@ extension GtkPrintQuality {
         case GTK_PRINT_QUALITY_DRAFT:
             return .draft
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

@@ -2,14 +2,12 @@ import CGtk
 
 /// Determines how GTK+ handles the sensitivity of stepper arrows at the end of range widgets.
 /// 
-/// https://docs.gtk.org/gtk3/enum.SensitivityType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.SensitivityType.html)
 public enum SensitivityType {
     /// The arrow is made insensitive if the thumb is at the end.
     case auto
-
     /// The arrow is always sensitive.
     case on
-
     /// The arrow is always insensitive.
     case off
 
@@ -26,7 +24,7 @@ public enum SensitivityType {
 }
 
 extension GtkSensitivityType {
-    func toSensitivityType() -> SensitivityType? {
+    func toSensitivityType() -> SensitivityType {
         switch self {
         case GTK_SENSITIVITY_AUTO:
             return .auto
@@ -35,7 +33,7 @@ extension GtkSensitivityType {
         case GTK_SENSITIVITY_OFF:
             return .off
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

@@ -2,11 +2,10 @@ import CGtk
 
 /// Defines the policy to be used in a scrollable widget when updating the scrolled window adjustments in a given orientation.
 /// 
-/// https://docs.gtk.org/gtk3/enum.ScrollablePolicy.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.ScrollablePolicy.html)
 public enum ScrollablePolicy {
     /// Scrollable adjustments are based on the minimum size.
     case minimum
-
     /// Scrollable adjustments are based on the natural size.
     case natural
 
@@ -21,14 +20,14 @@ public enum ScrollablePolicy {
 }
 
 extension GtkScrollablePolicy {
-    func toScrollablePolicy() -> ScrollablePolicy? {
+    func toScrollablePolicy() -> ScrollablePolicy {
         switch self {
         case GTK_SCROLL_MINIMUM:
             return .minimum
         case GTK_SCROLL_NATURAL:
             return .natural
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

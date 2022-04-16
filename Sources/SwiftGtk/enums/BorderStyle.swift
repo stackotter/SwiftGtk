@@ -2,35 +2,26 @@ import CGtk
 
 /// Describes how the border of a UI element should be rendered.
 /// 
-/// https://docs.gtk.org/gtk3/enum.BorderStyle.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.BorderStyle.html)
 public enum BorderStyle {
     /// No visible border.
     case none
-
     /// A single line segment.
     case solid
-
     /// Looks as if the content is sunken into the canvas.
     case inset
-
     /// Looks as if the content is coming out of the canvas.
     case outset
-
     /// Same as GTK_BORDER_STYLE_NONE.
     case hidden
-
     /// A series of round dots.
     case dotted
-
     /// A series of square-ended dashes.
     case dashed
-
     /// Two parallel lines with some space between them.
     case double
-
     /// Looks as if it were carved in the canvas.
     case groove
-
     /// Looks as if it were coming out of the canvas.
     case ridge
 
@@ -61,7 +52,7 @@ public enum BorderStyle {
 }
 
 extension GtkBorderStyle {
-    func toBorderStyle() -> BorderStyle? {
+    func toBorderStyle() -> BorderStyle {
         switch self {
         case GTK_BORDER_STYLE_NONE:
             return BorderStyle.none
@@ -84,7 +75,7 @@ extension GtkBorderStyle {
         case GTK_BORDER_STYLE_RIDGE:
             return .ridge
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

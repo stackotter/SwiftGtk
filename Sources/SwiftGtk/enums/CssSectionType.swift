@@ -6,32 +6,24 @@ import CGtk
 /// 
 /// Available since:	3.2
 ///
-/// https://docs.gtk.org/gtk3/enum.CssSectionType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.CssSectionType.html)
 public enum CssSectionType {
     /// The section describes a complete document. This section time is the only one where `gtk_css_section_get_parent()` might return `NULL`.
     case document
-
     /// The section defines an import rule.
     case `import`
-
     /// The section defines a color. This is a GTK extension to CSS.
     case colorDefinition
-
     /// The section defines a binding set. This is a GTK extension to CSS.
     case bindingSet
-
     /// The section defines a CSS ruleset.
     case ruleSet
-
     /// The section defines a CSS selector.
     case selector
-
     /// The section defines the declaration of a CSS variable.
     case declaration
-
     /// The section defines the value of a CSS declaration.
     case value
-
     /// The section defines keyframes. See [CSS Animations](http://dev.w3.org/csswg/css3-animations/#keyframes) for details. Since 3.6
     case keyFrames
 
@@ -60,7 +52,7 @@ public enum CssSectionType {
 }
 
 extension GtkCssSectionType {
-    func toCssSectionType() -> CssSectionType? {
+    func toCssSectionType() -> CssSectionType {
         switch self {
         case GTK_CSS_SECTION_DOCUMENT:
             return .document
@@ -81,7 +73,7 @@ extension GtkCssSectionType {
         case GTK_CSS_SECTION_KEYFRAMES:
             return .keyFrames
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

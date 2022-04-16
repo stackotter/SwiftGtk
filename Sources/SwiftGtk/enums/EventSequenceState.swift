@@ -2,14 +2,12 @@ import CGtk
 
 /// Describes the state of a `GdkEventSequence` in a `GtkGesture`.
 /// 
-/// https://docs.gtk.org/gtk3/enum.EventSequenceState.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.EventSequenceState.html)
 public enum EventSequenceState {
     /// The sequence is handled, but not grabbed.
     case none
-
     /// The sequence is handled and grabbed.
     case claimed
-
     /// The sequence is denied.
     case denied
 
@@ -26,7 +24,7 @@ public enum EventSequenceState {
 }
 
 extension GtkEventSequenceState {
-    func toEventSequenceState() -> EventSequenceState? {
+    func toEventSequenceState() -> EventSequenceState {
         switch self {
         case GTK_EVENT_SEQUENCE_NONE:
             return EventSequenceState.none
@@ -35,7 +33,7 @@ extension GtkEventSequenceState {
         case GTK_EVENT_SEQUENCE_DENIED:
             return .denied
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

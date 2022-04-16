@@ -2,11 +2,10 @@ import CGtk
 
 /// Represents the packing location GtkBox children. (See: `GtkVBox`, `GtkHBox`, and `GtkButtonBox`).
 /// 
-/// https://docs.gtk.org/gtk3/enum.PackType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.PackType.html)
 public enum PackType {
     /// The child is packed into the start of the box.
     case start
-
     /// The child is packed into the end of the box.
     case end
 
@@ -21,14 +20,14 @@ public enum PackType {
 }
 
 extension GtkPackType {
-    func toPackType() -> PackType? {
+    func toPackType() -> PackType {
         switch self {
         case GTK_PACK_START:
             return .start
         case GTK_PACK_END:
             return .end
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

@@ -2,26 +2,20 @@ import CGtk
 
 /// Used to reference the parts of `GtkTextView`.
 /// 
-/// https://docs.gtk.org/gtk3/enum.TextWindowType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.TextWindowType.html)
 public enum TextWindowType {
     /// Invalid value, used as a marker.
     case `private`
-
     /// Window that floats over scrolling areas.
     case widget
-
     /// Scrollable text window.
     case text
-
     /// Left side border window.
     case left
-
     /// Right side border window.
     case right
-
     /// Top border window.
     case top
-
     /// Bottom border window.
     case bottom
 
@@ -46,7 +40,7 @@ public enum TextWindowType {
 }
 
 extension GtkTextWindowType {
-    func toTextWindowType() -> TextWindowType? {
+    func toTextWindowType() -> TextWindowType {
         switch self {
         case GTK_TEXT_WINDOW_PRIVATE:
             return .private
@@ -63,7 +57,7 @@ extension GtkTextWindowType {
         case GTK_TEXT_WINDOW_BOTTOM:
             return .bottom
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

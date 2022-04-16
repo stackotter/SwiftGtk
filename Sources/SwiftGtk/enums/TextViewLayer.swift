@@ -2,17 +2,14 @@ import CGtk
 
 /// Used to reference the layers of `GtkTextView` for the purpose of customized drawing with the ::draw_layer vfunc.
 /// 
-/// https://docs.gtk.org/gtk3/enum.TextViewLayer.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.TextViewLayer.html)
 public enum TextViewLayer {
     /// Old deprecated layer, use GTK_TEXT_VIEW_LAYER_BELOW_TEXT instead.
     case below
-
     /// Old deprecated layer, use GTK_TEXT_VIEW_LAYER_ABOVE_TEXT instead.
     case above
-
     /// The layer rendered below the text (but above the background). Since: 3.20
     case belowText
-
     /// The layer rendered above the text. Since: 3.20
     case aboveText
 
@@ -31,7 +28,7 @@ public enum TextViewLayer {
 }
 
 extension GtkTextViewLayer {
-    func toTextViewLayer() -> TextViewLayer? {
+    func toTextViewLayer() -> TextViewLayer {
         switch self {
         case GTK_TEXT_VIEW_LAYER_BELOW:
             return .below
@@ -42,7 +39,7 @@ extension GtkTextViewLayer {
         case GTK_TEXT_VIEW_LAYER_ABOVE_TEXT:
             return .aboveText
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

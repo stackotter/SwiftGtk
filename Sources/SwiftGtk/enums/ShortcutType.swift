@@ -2,29 +2,22 @@ import CGtk
 
 /// GtkShortcutType specifies the kind of shortcut that is being described. More values may be added to this enumeration over time.
 /// 
-/// https://docs.gtk.org/gtk3/enum.ShortcutType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.ShortcutType.html)
 public enum ShortcutType {
     /// The shortcut is a keyboard accelerator. The `GtkShortcutsShortcut:accelerator` property will be used.
     case accelerator
-
     /// The shortcut is a pinch gesture. GTK+ provides an icon and subtitle.
     case gesturePinch
-
     /// The shortcut is a stretch gesture. GTK+ provides an icon and subtitle.
     case gestureStretch
-
     /// The shortcut is a clockwise rotation gesture. GTK+ provides an icon and subtitle.
     case gestureRotateClockwise
-
     /// The shortcut is a counterclockwise rotation gesture. GTK+ provides an icon and subtitle.
     case gestureRotateCounterClockwise
-
     /// The shortcut is a two-finger swipe gesture. GTK+ provides an icon and subtitle.
     case gestureTwoFingerSwipeLeft
-
     /// The shortcut is a two-finger swipe gesture. GTK+ provides an icon and subtitle.
     case gestureTwoFingerSwipeRight
-
     /// The shortcut is a gesture. The GtkShortcutsShortcut:icon property will be used.
     case gesture
 
@@ -51,7 +44,7 @@ public enum ShortcutType {
 }
 
 extension GtkShortcutType {
-    func toShortcutType() -> ShortcutType? {
+    func toShortcutType() -> ShortcutType {
         switch self {
         case GTK_SHORTCUT_ACCELERATOR:
             return .accelerator
@@ -70,7 +63,7 @@ extension GtkShortcutType {
         case GTK_SHORTCUT_GESTURE:
             return .gesture
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

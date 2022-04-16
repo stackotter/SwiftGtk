@@ -8,20 +8,16 @@ import CGtk
 /// 
 /// `GTK_ALIGN_BASELINE` support for it is optional for containers and widgets, and it is only supported for vertical alignment. When its not supported by a child or a container it is treated as `GTK_ALIGN_FILL`.
 /// 
-/// https://docs.gtk.org/gtk3/enum.Align.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.Align.html)
 public enum Align {
     /// Stretch to fill all space if possible, center if no meaningful way to stretch.
     case fill
-
     /// Snap to left or top side, leaving space on right or bottom.
     case start
-
     /// Snap to right or bottom side, leaving space on left or top.
     case end
-
     /// Center natural width of widget inside the allocation.
     case center
-
     /// Align the widget according to the baseline. Since 3.10.
     case baseline
 
@@ -42,7 +38,7 @@ public enum Align {
 }
 
 extension GtkAlign {
-    func toAlign() -> Align? {
+    func toAlign() -> Align {
         switch self {
         case GTK_ALIGN_FILL:
             return .fill
@@ -55,7 +51,7 @@ extension GtkAlign {
         case GTK_ALIGN_BASELINE:
             return .baseline
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

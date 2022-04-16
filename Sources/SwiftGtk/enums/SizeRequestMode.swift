@@ -2,14 +2,12 @@ import CGtk
 
 /// Specifies a preference for height-for-width or width-for-height geometry management.
 /// 
-/// https://docs.gtk.org/gtk3/enum.SizeRequestMode.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.SizeRequestMode.html)
 public enum SizeRequestMode {
     /// Prefer height-for-width geometry management.
     case heightForWidth
-
     /// Prefer width-for-height geometry management.
     case widthForHeight
-
     /// Don’t trade height-for-width or width-for-height.
     case constantSize
 
@@ -26,7 +24,7 @@ public enum SizeRequestMode {
 }
 
 extension GtkSizeRequestMode {
-    func toSizeRequestMode() -> SizeRequestMode? {
+    func toSizeRequestMode() -> SizeRequestMode {
         switch self {
         case GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH:
             return .heightForWidth
@@ -35,7 +33,7 @@ extension GtkSizeRequestMode {
         case GTK_SIZE_REQUEST_CONSTANT_SIZE:
             return .constantSize
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

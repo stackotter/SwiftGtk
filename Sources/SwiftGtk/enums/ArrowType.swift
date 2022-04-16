@@ -2,20 +2,16 @@ import CGtk
 
 /// Used to indicate the direction in which an arrow should point.
 ///
-/// https://docs.gtk.org/gtk3/enum.ArrowType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.ArrowType.html)
 public enum ArrowType {
     /// Represents an upward pointing arrow.
     case up
-    
     /// Represents a downward pointing arrow.
     case down
-
     /// Represents a left pointing arrow.
     case left
-
     /// Represents a right pointing arrow.
     case right
-
     /// No arrow. Since 2.10.
     case none
 
@@ -36,7 +32,7 @@ public enum ArrowType {
 }
 
 extension GtkArrowType {
-    func toArrowType() -> ArrowType? {
+    func toArrowType() -> ArrowType {
         switch self {
         case GTK_ARROW_UP:
             return .up
@@ -49,7 +45,7 @@ extension GtkArrowType {
         case GTK_ARROW_NONE:
             return ArrowType.none
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

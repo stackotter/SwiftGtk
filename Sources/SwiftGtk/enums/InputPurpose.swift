@@ -10,38 +10,28 @@ import CGtk
 /// 
 /// Available since:	3.6
 /// 
-/// https://docs.gtk.org/gtk3/enum.InputPurpose.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.InputPurpose.html)
 public enum InputPurpose {
     /// Allow any character.
     case freeForm
-
     /// Allow only alphabetic characters.
     case alpha
-
     /// Allow only digits.
     case digits
-
     /// Edited field expects numbers.
     case number
-
     /// Edited field expects phone number.
     case phone
-
     /// Edited field expects URL.
     case url
-
     /// Edited field expects email address.
     case email
-
     /// Edited field expects the name of a person.
     case name
-
     /// Like `GTK_INPUT_PURPOSE_FREE_FORM`, but characters are hidden.
     case password
-
     /// Like `GTK_INPUT_PURPOSE_DIGITS`, but characters are hidden.
     case pin
-
     /// Allow any character, in addition to control codes.
     case terminal
 
@@ -74,7 +64,7 @@ public enum InputPurpose {
 }
 
 extension GtkInputPurpose {
-    func toInputPurpose() -> InputPurpose? {
+    func toInputPurpose() -> InputPurpose {
         switch self {
         case GTK_INPUT_PURPOSE_FREE_FORM:
             return .freeForm
@@ -99,7 +89,7 @@ extension GtkInputPurpose {
         case GTK_INPUT_PURPOSE_TERMINAL:
             return .terminal
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

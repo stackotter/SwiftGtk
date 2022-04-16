@@ -2,17 +2,14 @@ import CGtk
 
 /// Describes the panning direction of a `GtkGesturePan`.
 /// 
-/// https://docs.gtk.org/gtk3/enum.PanDirection.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.PanDirection.html)
 public enum PanDirection {
     /// Panned towards the left.
     case left
-
     /// Panned towards the right.
     case right
-
     /// Panned upwards.
     case up
-
     /// Panned downwards.
     case down
 
@@ -31,7 +28,7 @@ public enum PanDirection {
 }
 
 extension GtkPanDirection {
-    func toPanDirection() -> PanDirection? {
+    func toPanDirection() -> PanDirection {
         switch self {
         case GTK_PAN_DIRECTION_LEFT:
             return .left
@@ -42,7 +39,7 @@ extension GtkPanDirection {
         case GTK_PAN_DIRECTION_DOWN:
             return .down
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

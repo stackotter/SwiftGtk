@@ -2,14 +2,12 @@ import CGtk
 
 /// The sizing method the column uses to determine its width. Please note that `GTK_TREE_VIEW_COLUMN_AUTOSIZE` are inefficient for large views, and can make columns appear choppy.
 /// 
-/// https://docs.gtk.org/gtk3/enum.TreeViewColumnSizing.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.TreeViewColumnSizing.html)
 public enum TreeViewColumnSizing {
     /// Columns only get bigger in reaction to changes in the model.
     case growOnly
-
     /// Columns resize to be the optimal size everytime the model changes.
-    case autosize
-
+    case auto
     /// Columns are a fixed numbers of pixels wide.
     case fixed
 
@@ -17,7 +15,7 @@ public enum TreeViewColumnSizing {
         switch self {
         case .growOnly:
             return GTK_TREE_VIEW_COLUMN_GROW_ONLY
-        case .autosize:
+        case .auto:
             return GTK_TREE_VIEW_COLUMN_AUTOSIZE
         case .fixed:
             return GTK_TREE_VIEW_COLUMN_FIXED
@@ -26,16 +24,16 @@ public enum TreeViewColumnSizing {
 }
 
 extension GtkTreeViewColumnSizing {
-    func toTreeViewColumnSizing() -> TreeViewColumnSizing? {
+    func toTreeViewColumnSizing() -> TreeViewColumnSizing {
         switch self {
         case GTK_TREE_VIEW_COLUMN_GROW_ONLY:
             return .growOnly
         case GTK_TREE_VIEW_COLUMN_AUTOSIZE:
-            return .autosize
+            return .auto
         case GTK_TREE_VIEW_COLUMN_FIXED:
             return .fixed
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

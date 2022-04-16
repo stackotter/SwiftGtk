@@ -2,23 +2,18 @@ import CGtk
 
 /// These enumeration values describe the possible transitions when the child of a GtkRevealer widget is shown or hidden.
 /// 
-/// https://docs.gtk.org/gtk3/enum.RevealerTransitionType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.RevealerTransitionType.html)
 public enum RevealerTransitionType {
     /// No transition.
     case none
-
     /// Fade in.
     case crossFade
-
     /// Slide in from the left.
     case slideRight
-
     /// Slide in from the right.
     case slideLeft
-
     /// Slide in from the bottom.
     case slideUp
-
     /// Slide in from the top.
     case slideDown
 
@@ -41,7 +36,7 @@ public enum RevealerTransitionType {
 }
 
 extension GtkRevealerTransitionType {
-    func toRevealerTransitionType() -> RevealerTransitionType? {
+    func toRevealerTransitionType() -> RevealerTransitionType {
         switch self {
         case GTK_REVEALER_TRANSITION_TYPE_NONE:
             return RevealerTransitionType.none
@@ -56,7 +51,7 @@ extension GtkRevealerTransitionType {
         case GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN:
             return .slideDown
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

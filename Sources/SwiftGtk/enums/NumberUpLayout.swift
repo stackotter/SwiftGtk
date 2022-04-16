@@ -2,7 +2,7 @@ import CGtk
 
 /// Used to determine the layout of pages on a sheet when printing multiple pages per sheet.
 /// 
-/// https://docs.gtk.org/gtk3/enum.NumberUpLayout.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.NumberUpLayout.html)
 public enum NumberUpLayout {
     case leftToRightTopToBottom
     case leftToRightBottomToTop
@@ -36,7 +36,7 @@ public enum NumberUpLayout {
 }
 
 extension GtkNumberUpLayout {
-    func toNumberUpLayout() -> NumberUpLayout? {
+    func toNumberUpLayout() -> NumberUpLayout {
         switch self {
         case GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM:
             return .leftToRightTopToBottom
@@ -55,7 +55,7 @@ extension GtkNumberUpLayout {
         case GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT:
             return .bottomToTopRightToLeft
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

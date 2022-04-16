@@ -2,17 +2,14 @@ import CGtk
 
 /// An enumeration representing directional movements within a menu.
 /// 
-/// https://docs.gtk.org/gtk3/enum.MenuDirectionType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.MenuDirectionType.html)
 public enum MenuDirectionType {
     /// To the parent menu shell.
     case parent
-
     /// To the submenu, if any, associated with the item.
     case child
-
     /// To the next menu item.
     case next
-
     /// To the previous menu item.
     case previous
 
@@ -31,7 +28,7 @@ public enum MenuDirectionType {
 }
 
 extension GtkMenuDirectionType {
-    func toMenuDirectionType() -> MenuDirectionType? {
+    func toMenuDirectionType() -> MenuDirectionType {
         switch self {
         case GTK_MENU_DIR_PARENT:
             return .parent
@@ -42,7 +39,7 @@ extension GtkMenuDirectionType {
         case GTK_MENU_DIR_PREV:
             return .previous
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

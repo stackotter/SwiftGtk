@@ -1,34 +1,25 @@
 import CGtk
 
-/// https://docs.gtk.org/gtk3/enum.MovementStep.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.MovementStep.html)
 public enum MovementStep {
     /// Move forward or back by graphemes.
     case logicalPositions
-
     /// Move left or right by graphemes.
     case visualPositions
-
     /// Move forward or back by words.
     case words
-
     /// Move up or down lines (wrapped lines)
     case displayLines
-
     /// Move to either end of a line.
     case displayLineEnds
-
     /// Move up or down paragraphs (newline-ended lines)
     case paragraphs
-
     /// Move to either end of a paragraph.
     case paragraphEnds
-
     /// Move by pages.
     case pages
-
     /// Move to ends of the buffer.
     case bufferEnds
-
     /// Move horizontally by pages.
     case horizontalPages
 
@@ -59,7 +50,7 @@ public enum MovementStep {
 }
 
 extension GtkMovementStep {
-    func toMovementStep() -> MovementStep? {
+    func toMovementStep() -> MovementStep {
         switch self {
         case GTK_MOVEMENT_LOGICAL_POSITIONS:
             return .logicalPositions
@@ -82,7 +73,7 @@ extension GtkMovementStep {
         case GTK_MOVEMENT_HORIZONTAL_PAGES:
             return .horizontalPages
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

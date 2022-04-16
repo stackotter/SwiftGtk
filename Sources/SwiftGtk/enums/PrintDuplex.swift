@@ -2,14 +2,12 @@ import CGtk
 
 /// See also gtk_print_settings_set_duplex().
 /// 
-/// https://docs.gtk.org/gtk3/enum.PrintDuplex.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.PrintDuplex.html)
 public enum PrintDuplex {
     /// No duplex.
     case simplex
-
     /// Horizontal duplex.
     case horizontal
-
     /// Vertical duplex.
     case vertical
 
@@ -26,7 +24,7 @@ public enum PrintDuplex {
 }
 
 extension GtkPrintDuplex {
-    func toPrintDuplex() -> PrintDuplex? {
+    func toPrintDuplex() -> PrintDuplex {
         switch self {
         case GTK_PRINT_DUPLEX_SIMPLEX:
             return .simplex
@@ -35,7 +33,7 @@ extension GtkPrintDuplex {
         case GTK_PRINT_DUPLEX_VERTICAL:
             return .vertical
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

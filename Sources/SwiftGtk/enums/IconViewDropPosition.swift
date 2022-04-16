@@ -2,23 +2,18 @@ import CGtk
 
 /// An enum for determining where a dropped item goes.
 /// 
-/// https://docs.gtk.org/gtk3/enum.IconViewDropPosition.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.IconViewDropPosition.html)
 public enum IconViewDropPosition {
     /// No drop possible.
     case noDrop
-
     /// Dropped item replaces the item.
     case dropInto
-
     /// Droppped item is inserted to the left.
     case dropLeft
-
     /// Dropped item is inserted to the right.
     case dropRight
-
     /// Dropped item is inserted above.
     case dropAbove
-
     /// Dropped item is inserted below.
     case dropBelow
 
@@ -41,7 +36,7 @@ public enum IconViewDropPosition {
 }
 
 extension GtkIconViewDropPosition {
-    func toIconViewDropPosition() -> IconViewDropPosition? {
+    func toIconViewDropPosition() -> IconViewDropPosition {
         switch self {
         case GTK_ICON_VIEW_NO_DROP:
             return .noDrop
@@ -56,7 +51,7 @@ extension GtkIconViewDropPosition {
         case GTK_ICON_VIEW_DROP_BELOW:
             return .dropBelow
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

@@ -2,38 +2,28 @@ import CGtk
 
 /// Predefined values for use as response ids in `gtk_dialog_add_button()`. All predefined values are negative; GTK+ leaves values of 0 or greater for application-defined response ids.
 /// 
-/// https://docs.gtk.org/gtk3/enum.ResponseType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.ResponseType.html)
 public enum ResponseType {
     /// Returned if an action widget has no response id, or if the dialog gets programmatically hidden or destroyed.
     case none
-
     /// Generic response id, not used by GTK+ dialogs.
     case reject
-
     /// Generic response id, not used by GTK+ dialogs.
     case accept
-
     /// Returned if the dialog is deleted.
     case deleteEvent
-
     /// Returned by OK buttons in GTK+ dialogs.
     case ok
-
     /// Returned by Cancel buttons in GTK+ dialogs.
     case cancel
-
     /// Returned by Close buttons in GTK+ dialogs.
     case close
-
     /// Returned by Yes buttons in GTK+ dialogs.
     case yes
-
     /// Returned by No buttons in GTK+ dialogs.
     case no
-
     /// Returned by Apply buttons in GTK+ dialogs.
     case apply
-
     /// Returned by Help buttons in GTK+ dialogs.
     case help
 
@@ -66,7 +56,7 @@ public enum ResponseType {
 }
 
 extension GtkResponseType {
-    func toResponseType() -> ResponseType? {
+    func toResponseType() -> ResponseType {
         switch self {
         case GTK_RESPONSE_NONE:
             return ResponseType.none
@@ -91,7 +81,7 @@ extension GtkResponseType {
         case GTK_RESPONSE_HELP:
             return .help
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

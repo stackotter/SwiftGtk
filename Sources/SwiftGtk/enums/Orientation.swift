@@ -2,11 +2,10 @@ import CGtk
 
 /// Represents the orientation of widgets and other objects which can be switched between horizontal and vertical orientation on the fly, like `GtkToolbar` or `GtkGesturePan`.
 /// 
-/// https://docs.gtk.org/gtk3/enum.Orientation.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.Orientation.html)
 public enum Orientation {
     /// The element is in horizontal orientation.
     case horizontal
-
     /// The element is in vertical orientation.
     case vertical
 
@@ -21,14 +20,14 @@ public enum Orientation {
 }
 
 extension GtkOrientation {
-    func toOrientation() -> Orientation? {
+    func toOrientation() -> Orientation {
         switch self {
         case GTK_ORIENTATION_HORIZONTAL:
             return .horizontal
         case GTK_ORIENTATION_VERTICAL:
             return .vertical
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

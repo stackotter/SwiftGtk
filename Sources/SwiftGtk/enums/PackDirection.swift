@@ -2,47 +2,44 @@ import CGtk
 
 /// Determines how widgets should be packed inside menubars and menuitems contained in menubars.
 /// 
-/// https://docs.gtk.org/gtk3/enum.PackDirection.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.PackDirection.html)
 public enum PackDirection {
     /// Widgets are packed left-to-right.
-    case ltr
-
+    case leftToRight
     /// Widgets are packed right-to-left.
-    case rtl
-
+    case rightToLeft
     /// Widgets are packed top-to-bottom.
-    case ttb
-
+    case topToBottom
     /// Widgets are packed bottom-to-top.
-    case btt
+    case bottomToTop
 
     func toGtkPackDirection() -> GtkPackDirection {
         switch self {
-        case .ltr:
+        case .leftToRight:
             return GTK_PACK_DIRECTION_LTR
-        case .rtl:
+        case .rightToLeft:
             return GTK_PACK_DIRECTION_RTL
-        case .ttb:
+        case .topToBottom:
             return GTK_PACK_DIRECTION_TTB
-        case .btt:
+        case .bottomToTop:
             return GTK_PACK_DIRECTION_BTT
         }
     }
 }
 
 extension GtkPackDirection {
-    func toPackDirection() -> PackDirection? {
+    func toPackDirection() -> PackDirection {
         switch self {
         case GTK_PACK_DIRECTION_LTR:
-            return .ltr
+            return .leftToRight
         case GTK_PACK_DIRECTION_RTL:
-            return .rtl
+            return .rightToLeft
         case GTK_PACK_DIRECTION_TTB:
-            return .ttb
+            return .topToBottom
         case GTK_PACK_DIRECTION_BTT:
-            return .btt
+            return .bottomToTop
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

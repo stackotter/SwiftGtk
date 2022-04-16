@@ -2,17 +2,14 @@ import CGtk
 
 /// Used for justifying the text inside a GtkLabel widget. (See also GtkAlignment).
 /// 
-/// https://docs.gtk.org/gtk3/enum.Justification.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.Justification.html)
 public enum Justification {
     /// The text is placed at the left edge of the label.
     case left
-
     /// The text is placed at the right edge of the label.
     case right
-
     /// The text is placed in the center of the label.
     case center
-
     /// The text is placed is distributed across the label.
     case fill
 
@@ -31,7 +28,7 @@ public enum Justification {
 }
 
 extension GtkJustification {
-    func toJustification() -> Justification? {
+    func toJustification() -> Justification {
         switch self {
         case GTK_JUSTIFY_LEFT:
             return .left
@@ -42,7 +39,7 @@ extension GtkJustification {
         case GTK_JUSTIFY_FILL:
             return .fill
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

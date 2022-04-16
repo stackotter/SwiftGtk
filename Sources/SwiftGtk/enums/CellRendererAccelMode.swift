@@ -2,11 +2,10 @@ import CGtk
 
 /// Determines if the edited accelerators are GTK+ accelerators. If they are, consumed modifiers are suppressed, only accelerators accepted by GTK+ are allowed, and the accelerators are rendered in the same way as they are in menus.
 /// 
-/// https://docs.gtk.org/gtk3/enum.CellRendererAccelMode.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.CellRendererAccelMode.html)
 public enum CellRendererAccelMode {
     /// GTK+ accelerators mode.
     case gtk
-
     /// Other accelerator mode.
     case other
 
@@ -21,14 +20,14 @@ public enum CellRendererAccelMode {
 }
 
 extension GtkCellRendererAccelMode {
-    func toCellRendererAccelMode() -> CellRendererAccelMode? {
+    func toCellRendererAccelMode() -> CellRendererAccelMode {
         switch self {
         case GTK_CELL_RENDERER_ACCEL_MODE_GTK:
             return .gtk
         case GTK_CELL_RENDERER_ACCEL_MODE_OTHER:
             return .other
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

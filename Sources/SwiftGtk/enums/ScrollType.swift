@@ -2,53 +2,38 @@ import CGtk
 
 /// Scrolling types.
 /// 
-/// https://docs.gtk.org/gtk3/enum.ScrollType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.ScrollType.html)
 public enum ScrollType {
     /// No scrolling.
     case none
-
     /// Jump to new location.
     case jump
-
     /// Step backward.
     case stepBackward
-
     /// Step forward.
-	case stepForward
-
+    case stepForward
     /// Page backward.
     case pageBackward
-    
     /// Page forward.
     case pageForward
-
     /// Step up.
-    case stepUp
-	
+    case stepUp	
     /// Step down.
     case stepDown
-
     /// Page up.
     case pageUp
-
     /// Page down.
     case pageDown
-
     /// Step to the left.
     case stepLeft
-	
     /// Step to the right.
     case stepRight
-
     /// Page to the left.
     case pageLeft
-
     /// Page to the right.
     case pageRight
-
     /// Scroll to start.
     case start
-
     /// Scroll to end.
     case end
 
@@ -91,7 +76,7 @@ public enum ScrollType {
 }
 
 extension GtkScrollType {
-    func toScrollType() -> ScrollType? {
+    func toScrollType() -> ScrollType {
         switch self {
         case GTK_SCROLL_NONE:
             return ScrollType.none
@@ -126,7 +111,7 @@ extension GtkScrollType {
         case GTK_SCROLL_END:
             return .end
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

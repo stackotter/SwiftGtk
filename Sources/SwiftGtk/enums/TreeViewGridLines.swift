@@ -2,17 +2,14 @@ import CGtk
 
 /// Used to indicate which grid lines to draw in a tree view.
 /// 
-/// https://docs.gtk.org/gtk3/enum.TreeViewGridLines.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.TreeViewGridLines.html)
 public enum TreeViewGridLines {
     /// No grid lines.
     case none
-
     /// Horizontal grid lines.
     case horizontal
-
     /// Vertical grid lines.
     case vertical
-
     /// Horizontal and vertical grid lines.
     case both
 
@@ -31,7 +28,7 @@ public enum TreeViewGridLines {
 }
 
 extension GtkTreeViewGridLines {
-    func toTreeViewGridLines() -> TreeViewGridLines? {
+    func toTreeViewGridLines() -> TreeViewGridLines {
         switch self {
         case GTK_TREE_VIEW_GRID_LINES_NONE:
             return TreeViewGridLines.none
@@ -42,7 +39,7 @@ extension GtkTreeViewGridLines {
         case GTK_TREE_VIEW_GRID_LINES_BOTH:
             return .both
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

@@ -2,23 +2,18 @@ import CGtk
 
 /// Focus movement types.
 /// 
-/// https://docs.gtk.org/gtk3/enum.DirectionType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.DirectionType.html)
 public enum DirectionType {
     /// Move forward.
     case tabForward
-    
     /// Move backward.
     case tabBackward
-
     /// Move up.
     case up
-
     /// Move down.
     case down
-
     /// Move left.
     case left
-
     /// Move right.
     case right
 
@@ -41,7 +36,7 @@ public enum DirectionType {
 }
 
 extension GtkDirectionType {
-    func toDirectionType() -> DirectionType? {
+    func toDirectionType() -> DirectionType {
         switch self {
         case GTK_DIR_TAB_FORWARD:
             return .tabForward
@@ -56,7 +51,7 @@ extension GtkDirectionType {
         case GTK_DIR_RIGHT:
             return .right
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

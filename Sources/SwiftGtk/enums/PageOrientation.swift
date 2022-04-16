@@ -2,17 +2,14 @@ import CGtk
 
 /// See also gtk_print_settings_set_orientation().
 /// 
-/// https://docs.gtk.org/gtk3/enum.PageOrientation.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.PageOrientation.html)
 public enum PageOrientation {
     /// Portrait mode.
     case portrait
-
     /// Landscape mode.
     case landscape
-
     /// Reverse portrait mode.
     case reversePortrait
-
     /// Reverse landscape mode.
     case reverseLandscape
 
@@ -31,7 +28,7 @@ public enum PageOrientation {
 }
 
 extension GtkPageOrientation {
-    func toPageOrientation() -> PageOrientation? {
+    func toPageOrientation() -> PageOrientation {
         switch self {
         case GTK_PAGE_ORIENTATION_PORTRAIT:
             return .portrait
@@ -42,7 +39,7 @@ extension GtkPageOrientation {
         case GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE:
             return .reverseLandscape
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

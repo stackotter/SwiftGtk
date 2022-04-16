@@ -2,14 +2,12 @@ import CGtk
 
 /// See also gtk_print_job_set_page_set().
 /// 
-/// https://docs.gtk.org/gtk3/enum.PageSet.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.PageSet.html)
 public enum PageSet {
     /// All pages.
     case all
-
     /// Even pages.
     case even
-
     /// Odd pages.
     case odd
 
@@ -26,7 +24,7 @@ public enum PageSet {
 }
 
 extension GtkPageSet {
-    func toPageSet() -> PageSet? {
+    func toPageSet() -> PageSet {
         switch self {
         case GTK_PAGE_SET_ALL:
             return .all
@@ -35,7 +33,7 @@ extension GtkPageSet {
         case GTK_PAGE_SET_ODD:
             return .odd
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

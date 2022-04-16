@@ -2,17 +2,14 @@ import CGtk
 
 /// Specifies which corner a child widget should be placed in when packed into a `GtkScrolledWindow`. This is effectively the opposite of where the scroll bars are placed.
 /// 
-/// https://docs.gtk.org/gtk3/enum.CornerType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.CornerType.html)
 public enum CornerType {
     /// Place the scrollbars on the right and bottom of the widget (default behaviour).
     case topLeft
-
     /// Place the scrollbars on the top and right of the widget.
     case bottomLeft
-
     /// Place the scrollbars on the left and bottom of the widget.
     case topRight
-
     /// Place the scrollbars on the top and left of the widget.
     case bottomRight
 
@@ -31,7 +28,7 @@ public enum CornerType {
 }
 
 extension GtkCornerType {
-    func toCornerType() -> CornerType? {
+    func toCornerType() -> CornerType {
         switch self {
         case GTK_CORNER_TOP_LEFT:
             return .topLeft
@@ -42,7 +39,7 @@ extension GtkCornerType {
         case GTK_CORNER_BOTTOM_RIGHT:
             return .bottomRight
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

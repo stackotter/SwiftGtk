@@ -4,23 +4,18 @@ import CGtk
 /// 
 /// Please note that GTK_BUTTONS_OK, GTK_BUTTONS_YES_NO and GTK_BUTTONS_OK_CANCEL are discouraged by the [GNOME Human Interface Guidelines](http://library.gnome.org/devel/hig-book/stable/).
 ///
-/// https://docs.gtk.org/gtk3/enum.ButtonsType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.ButtonsType.html)
 public enum ButtonsType {
     /// No buttons at all.
     case none
-
     /// An OK button.
     case ok
-
     /// A Close button.
     case close
-
     /// A Cancel button.
     case cancel
-
     /// Yes and No buttons.
     case yesAndNo
-
     /// OK and Cancel buttons.
     case okAndCancel
 
@@ -43,7 +38,7 @@ public enum ButtonsType {
 }
 
 extension GtkButtonsType {
-    func toButtonsType() -> ButtonsType? {
+    func toButtonsType() -> ButtonsType {
         switch self {
         case GTK_BUTTONS_NONE:
             return ButtonsType.none
@@ -58,7 +53,7 @@ extension GtkButtonsType {
         case GTK_BUTTONS_OK_CANCEL:
             return .okAndCancel
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

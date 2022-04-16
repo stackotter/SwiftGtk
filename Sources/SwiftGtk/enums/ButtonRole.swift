@@ -2,14 +2,12 @@ import CGtk
 
 /// The role specifies the desired appearance of a `GtkModelButton`.
 ///
-/// https://docs.gtk.org/gtk3/enum.ButtonRole.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.ButtonRole.html)
 public enum ButtonRole {
     /// A plain button.
     case normal
-
     /// A check button.
     case check
-
     /// A radio button.
     case radio
 
@@ -26,7 +24,7 @@ public enum ButtonRole {
 }
 
 extension GtkButtonRole {
-    func toButtonRole() -> ButtonRole? {
+    func toButtonRole() -> ButtonRole {
         switch self {
         case GTK_BUTTON_ROLE_NORMAL:
             return .normal
@@ -35,7 +33,7 @@ extension GtkButtonRole {
         case GTK_BUTTON_ROLE_RADIO:
             return .radio
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

@@ -4,14 +4,12 @@ import CGtk
 ///
 /// The values counts down from -1 to avoid clashes with application added drag destinations which usually start at 0.
 /// 
-/// https://docs.gtk.org/gtk3/enum.TextBufferTargetInfo.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.TextBufferTargetInfo.html)
 public enum TextBufferTargetInfo {
     /// Buffer contents.
     case bufferContents
-
     /// Rich text.
     case richText
-
     /// Text.
     case text
 
@@ -28,7 +26,7 @@ public enum TextBufferTargetInfo {
 }
 
 extension GtkTextBufferTargetInfo {
-    func toTextBufferTargetInfo() -> TextBufferTargetInfo? {
+    func toTextBufferTargetInfo() -> TextBufferTargetInfo {
         switch self {
         case GTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS:
             return .bufferContents
@@ -37,7 +35,7 @@ extension GtkTextBufferTargetInfo {
         case GTK_TEXT_BUFFER_TARGET_INFO_TEXT:
             return .text
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

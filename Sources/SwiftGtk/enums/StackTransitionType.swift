@@ -4,65 +4,46 @@ import CGtk
 ///
 /// New values may be added to this enumeration over time.
 /// 
-/// https://docs.gtk.org/gtk3/enum.StackTransitionType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.StackTransitionType.html)
 public enum StackTransitionType {
     /// No transition.
     case none
-
     /// A cross-fade.
     case crossfade
-
     /// Slide from left to right.
     case slideRight
-
     /// Slide from right to left.
     case slideLeft
-
     /// Slide from bottom up.
     case slideUp
-
     /// Slide from top down.
     case slideDown
-
     /// Slide from left or right according to the children order.
     case slideLeftRight
-
     /// Slide from top down or bottom up according to the order.
     case slideUpDown
-
     /// Cover the old page by sliding up. Since 3.12
     case overUp
-
     /// Cover the old page by sliding down. Since: 3.12
     case overDown
-
     /// Cover the old page by sliding to the left. Since: 3.12
     case overLeft
-
     /// Cover the old page by sliding to the right. Since: 3.12
     case overRight
-
     /// Uncover the new page by sliding up. Since 3.12
     case underUp
-
     /// Uncover the new page by sliding down. Since: 3.12
     case underDown
-
     /// Uncover the new page by sliding to the left. Since: 3.12
     case underLeft
-
     /// Uncover the new page by sliding to the right. Since: 3.12
     case underRight
-
     /// Cover the old page sliding up or uncover the new page sliding down, according to order. Since: 3.12
     case overUpDown
-
     /// Cover the old page sliding down or uncover the new page sliding up, according to order. Since: 3.14
     case overDownUp
-
     /// Cover the old page sliding left or uncover the new page sliding right, according to order. Since: 3.14
     case overLeftRight
-
     /// Cover the old page sliding right or uncover the new page sliding left, according to order. Since: 3.14
     case overRightLeft
 
@@ -113,7 +94,7 @@ public enum StackTransitionType {
 }
 
 extension GtkStackTransitionType {
-    func toStackTransitionType() -> StackTransitionType? {
+    func toStackTransitionType() -> StackTransitionType {
         switch self {
         case GTK_STACK_TRANSITION_TYPE_NONE:
             return StackTransitionType.none
@@ -156,7 +137,7 @@ extension GtkStackTransitionType {
         case GTK_STACK_TRANSITION_TYPE_OVER_RIGHT_LEFT:
             return .overRightLeft
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

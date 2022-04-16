@@ -2,17 +2,14 @@ import CGtk
 
 /// Used to specify the style of the expanders drawn by a `GtkTreeView`.
 /// 
-/// https://docs.gtk.org/gtk3/enum.ExpanderStyle.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.ExpanderStyle.html)
 public enum ExpanderStyle {
     /// The style used for a collapsed subtree.
     case collapsed
-
     /// The style used for a collapsed subtree.
     case semiCollapsed
-
     /// Intermediate style used during animation.
     case semiExpanded
-
     /// The style used for an expanded subtree.
     case expanded
 
@@ -31,7 +28,7 @@ public enum ExpanderStyle {
 }
 
 extension GtkExpanderStyle {
-    func toExpanderStyle() -> ExpanderStyle? {
+    func toExpanderStyle() -> ExpanderStyle {
         switch self {
         case GTK_EXPANDER_COLLAPSED:
             return .collapsed
@@ -42,7 +39,7 @@ extension GtkExpanderStyle {
         case GTK_EXPANDER_EXPANDED:
             return .expanded
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

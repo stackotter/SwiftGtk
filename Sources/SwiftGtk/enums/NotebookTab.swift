@@ -1,6 +1,6 @@
 import CGtk
 
-/// https://docs.gtk.org/gtk3/enum.NotebookTab.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.NotebookTab.html)
 public enum NotebookTab {
     case first
     case last
@@ -16,14 +16,14 @@ public enum NotebookTab {
 }
 
 extension GtkNotebookTab {
-    func toNotebookTab() -> NotebookTab? {
+    func toNotebookTab() -> NotebookTab {
         switch self {
         case GTK_NOTEBOOK_TAB_FIRST:
             return .first
         case GTK_NOTEBOOK_TAB_LAST:
             return .last
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

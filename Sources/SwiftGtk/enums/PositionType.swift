@@ -2,17 +2,14 @@ import CGtk
 
 /// Describes which edge of a widget a certain feature is positioned at, e.g. the tabs of a `GtkNotebook`, the handle of a `GtkHandleBox` or the label of a `GtkScale`.
 /// 
-/// https://docs.gtk.org/gtk3/enum.PositionType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.PositionType.html)
 public enum PositionType {
     /// The feature is at the left edge.
     case left
-
     /// The feature is at the right edge.
     case right
-
     /// The feature is at the top edge.
     case top
-
     /// The feature is at the bottom edge.
     case bottom
 
@@ -31,7 +28,7 @@ public enum PositionType {
 }
 
 extension GtkPositionType {
-    func toPositionType() -> PositionType? {
+    func toPositionType() -> PositionType {
         switch self {
         case GTK_POS_LEFT:
             return .left
@@ -42,7 +39,7 @@ extension GtkPositionType {
         case GTK_POS_BOTTOM:
             return .bottom
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

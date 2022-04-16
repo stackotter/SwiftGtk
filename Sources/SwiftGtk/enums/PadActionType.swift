@@ -2,14 +2,12 @@ import CGtk
 
 /// The type of a pad action.
 /// 
-/// https://docs.gtk.org/gtk3/enum.PadActionType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.PadActionType.html)
 public enum PadActionType {
     /// Action is triggered by a pad button.
     case button
-
     /// Action is triggered by a pad ring.
     case ring
-
     /// Action is triggered by a pad strip.
     case strip
 
@@ -26,7 +24,7 @@ public enum PadActionType {
 }
 
 extension GtkPadActionType {
-    func toPadActionType() -> PadActionType? {
+    func toPadActionType() -> PadActionType {
         switch self {
         case GTK_PAD_ACTION_BUTTON:
             return .button
@@ -35,7 +33,7 @@ extension GtkPadActionType {
         case GTK_PAD_ACTION_STRIP:
             return .strip
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

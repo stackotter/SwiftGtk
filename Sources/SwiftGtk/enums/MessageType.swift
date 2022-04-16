@@ -2,20 +2,16 @@ import CGtk
 
 /// The type of message being displayed in the dialog.
 /// 
-/// https://docs.gtk.org/gtk3/enum.MessageType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.MessageType.html)
 public enum MessageType {
     /// Informational message.
     case info
-
     /// Non-fatal warning message.
     case warning
-
     /// Question requiring a choice.
     case question
-
     /// Fatal error message.
     case error
-
     /// None of the above.
     case other
 
@@ -36,7 +32,7 @@ public enum MessageType {
 }
 
 extension GtkMessageType {
-    func toMessageType() -> MessageType? {
+    func toMessageType() -> MessageType {
         switch self {
         case GTK_MESSAGE_INFO:
             return .info
@@ -49,7 +45,7 @@ extension GtkMessageType {
         case GTK_MESSAGE_OTHER:
             return .other
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

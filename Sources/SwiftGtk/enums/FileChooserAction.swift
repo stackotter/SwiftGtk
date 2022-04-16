@@ -2,17 +2,14 @@ import CGtk
 
 /// Describes whether a `GtkFileChooser` is being used to open existing files or to save to a possibly new file.
 /// 
-/// https://docs.gtk.org/gtk3/enum.FileChooserAction.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.FileChooserAction.html)
 public enum FileChooserAction {
     /// Indicates open mode. The file chooser will only let the user pick an existing file.
     case `open`
-
     /// Indicates save mode. The file chooser will let the user pick an existing file, or type in a new filename.
     case save
-
     /// Indicates an Open mode for selecting folders. The file chooser will let the user pick an existing folder.
     case selectFolder
-
     /// Indicates a mode for creating a new folder. The file chooser will let the user name an existing or new folder.
     case createFolder
 
@@ -31,7 +28,7 @@ public enum FileChooserAction {
 }
 
 extension GtkFileChooserAction {
-    func toFileChooserAction() -> FileChooserAction? {
+    func toFileChooserAction() -> FileChooserAction {
         switch self {
         case GTK_FILE_CHOOSER_ACTION_OPEN:
             return .open
@@ -42,7 +39,7 @@ extension GtkFileChooserAction {
         case GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER:
             return .createFolder
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

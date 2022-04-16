@@ -2,26 +2,20 @@ import CGtk
 
 /// The values of the GtkSpinType enumeration are used to specify the change to make in gtk_spin_button_spin().
 /// 
-/// https://docs.gtk.org/gtk3/enum.SpinType.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.SpinType.html)
 public enum SpinType {
     /// Increment by the adjustments step increment.
     case stepForward
-
     /// Decrement by the adjustments step increment.
     case stepBackward
-
     /// Increment by the adjustments page increment.
     case pageForward
-
     /// Decrement by the adjustments page increment.
     case pageBackward
-
     /// Go to the adjustments lower bound.
     case home
-
     /// Go to the adjustments upper bound.
     case end
-
     /// Change by a specified amount.
     case userDefined
 
@@ -46,7 +40,7 @@ public enum SpinType {
 }
 
 extension GtkSpinType {
-    func toSpinType() -> SpinType? {
+    func toSpinType() -> SpinType {
         switch self {
         case GTK_SPIN_STEP_FORWARD:
             return .stepForward
@@ -63,7 +57,7 @@ extension GtkSpinType {
         case GTK_SPIN_USER_DEFINED:
             return .userDefined
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

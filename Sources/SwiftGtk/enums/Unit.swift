@@ -2,17 +2,14 @@ import CGtk
 
 /// See also `gtk_print_settings_set_paper_width()`.
 /// 
-/// https://docs.gtk.org/gtk3/enum.Unit.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.Unit.html)
 public enum Unit {
     /// No units.
     case none
-
     /// Dimensions in points.
     case points
-
     /// Dimensions in inches.
-    case inches
-    
+    case inches    
     /// Dimensions in millimeters.
     case millimeters
 
@@ -31,7 +28,7 @@ public enum Unit {
 }
 
 extension GtkUnit {
-    func toUnit() -> Unit? {
+    func toUnit() -> Unit {
         switch self {
         case GTK_UNIT_NONE:
             return Unit.none
@@ -42,7 +39,7 @@ extension GtkUnit {
         case GTK_UNIT_MM:
             return .millimeters
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

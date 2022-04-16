@@ -1,13 +1,11 @@
 import CGtk
 
-/// https://docs.gtk.org/gtk3/enum.ResizeMode.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.ResizeMode.html)
 public enum ResizeMode {
     /// Pass resize request to the parent.
     case parent
-
     /// Queue resizes on this widget.
     case queue
-
     /// Resize immediately. Deprecated.
     case immediate
 
@@ -24,7 +22,7 @@ public enum ResizeMode {
 }
 
 extension GtkResizeMode {
-    func toResizeMode() -> ResizeMode? {
+    func toResizeMode() -> ResizeMode {
         switch self {
         case GTK_RESIZE_PARENT:
             return .parent
@@ -33,7 +31,7 @@ extension GtkResizeMode {
         case GTK_RESIZE_IMMEDIATE:
             return .immediate
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }

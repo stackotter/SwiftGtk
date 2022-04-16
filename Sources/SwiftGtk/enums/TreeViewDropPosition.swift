@@ -2,17 +2,14 @@ import CGtk
 
 /// An enum for determining where a dropped row goes.
 /// 
-/// https://docs.gtk.org/gtk3/enum.TreeViewDropPosition.html
+/// [Gtk docs](https://docs.gtk.org/gtk3/enum.TreeViewDropPosition.html)
 public enum TreeViewDropPosition {
     /// Dropped row is inserted before.
     case before
-
     /// Dropped row is inserted after.
     case after
-
     /// Dropped row becomes a child or is inserted before.
     case intoOrBefore
-
     /// Dropped row becomes a child or is inserted after.
     case intoOrAfter
 
@@ -31,7 +28,7 @@ public enum TreeViewDropPosition {
 }
 
 extension GtkTreeViewDropPosition {
-    func toTreeViewDropPosition() -> TreeViewDropPosition? {
+    func toTreeViewDropPosition() -> TreeViewDropPosition {
         switch self {
         case GTK_TREE_VIEW_DROP_BEFORE:
             return .before
@@ -42,7 +39,7 @@ extension GtkTreeViewDropPosition {
         case GTK_TREE_VIEW_DROP_INTO_OR_AFTER:
             return .intoOrAfter
         default:
-            return nil
+            fatalError("Unexpected enum value")
         }
     }
 }
