@@ -42,30 +42,31 @@ open class Widget {
 
     // MARK: Public Properties
 
+    /// Sets whether the application intends to draw on the widget in an GtkWidget::draw handler.
     public var appPaintable: Bool {
         get { gtk_widget_get_app_paintable(widgetPointer).toBool() }
         set { gtk_widget_set_app_paintable(widgetPointer, newValue.toGBoolean()) }
     }
 
+    /// Specifies whether widget can be a default widget. See gtk_widget_grab_default() for details about the meaning of “default”.
     public var canDefault: Bool {
         get { gtk_widget_get_can_default(widgetPointer).toBool() }
         set { gtk_widget_set_can_default(widgetPointer, newValue.toGBoolean()) }
     }
 
+    /// Specifies whether widget can own the input focus. See gtk_widget_grab_focus() for actually setting the input focus on a widget.
     public var canFocus: Bool {
         get { gtk_widget_get_can_focus(widgetPointer).toBool() }
         set { gtk_widget_set_can_focus(widgetPointer, newValue.toGBoolean()) }
     }
 
+    /// Whether the widget is part of a composite widget.
     public var compositeChild: Bool {
         get { getProperty(castedPointer(), name: "composite-child") }
         set { setProperty(castedPointer(), name: "composite-child", newValue: newValue) }
     }
 
-    // public var events: EventMask {
-    //     get { gtk_widget_get_events(widgetPointer).toEventMask() }
-    //     set { gtk_widget_set_events(widgetPointer, newValue.toGdkEventMask()) }
-    // }
+    // TODO: add support for the events property
 
     /// Whether to expand in both directions. Setting this sets both `GtkWidget:hexpand`` and `GtkWidget:vexpand``.
     public var expand: Bool {
@@ -85,11 +86,13 @@ open class Widget {
         set { gtk_widget_set_halign(widgetPointer, newValue.toGtkAlign()) }
     }
 
+    /// Whether the widget is the default widget.
     public var hasDefault: Bool {
         get { getProperty(castedPointer(), name: "has-default") }
         set { setProperty(castedPointer(), name: "has-default", newValue: newValue) }
     }
 
+    /// Whether the widget has the input focus.
     public var hasFocus: Bool {
         get { getProperty(castedPointer(), name: "has-focus") }
         set { setProperty(castedPointer(), name: "has-focus", newValue: newValue) }
@@ -101,6 +104,7 @@ open class Widget {
         set { gtk_widget_set_has_tooltip(widgetPointer, newValue.toGBoolean()) }
     }
 
+    /// Override for height request of the widget, or -1 if natural request should be used.
     public var heightRequest: Int {
         get { getProperty(castedPointer(), name: "height-request") }
         set { setProperty(castedPointer(), name: "height-request", newValue: newValue) }
@@ -118,6 +122,7 @@ open class Widget {
         set { gtk_widget_set_hexpand_set(widgetPointer, newValue.toGBoolean()) }
     }
 
+    /// Whether the widget is the focus widget within the toplevel.
     public var isFocus: Bool {
         get { getProperty(castedPointer(), name: "is-focus") }
         set { setProperty(castedPointer(), name: "is-focus", newValue: newValue) }
@@ -153,11 +158,13 @@ open class Widget {
         set { gtk_widget_set_margin_top(widgetPointer, gint(newValue)) }
     }
 
-    public var name: String {
-        get { String(cString: gtk_widget_get_name(widgetPointer)) }
+    /// Widgets can be named, which allows you to refer to them from a CSS file. You can apply a style to widgets with a particular name in the CSS file. See the documentation for the CSS syntax (on the same page as the docs for GtkStyleContext).
+    public var name: String? {
+        get { gtk_widget_get_name(widgetPointer)?.toString() }
         set { gtk_widget_set_name(widgetPointer, newValue) }
     }
 
+    /// Sets the GtkWidget:no-show-all property, which determines whether calls to gtk_widget_show_all() will affect this widget.
     public var noShowAll: Bool {
         get { gtk_widget_get_no_show_all(widgetPointer).toBool() }
         set { gtk_widget_set_no_show_all(widgetPointer, newValue.toGBoolean()) }
@@ -169,11 +176,9 @@ open class Widget {
         set { gtk_widget_set_opacity(widgetPointer, newValue) }
     }
 
-    // public var parent: Container {
-    //     get { gtk_widget_get_parent(widgetPointer) }
-    //     set { gtk_widget_set_parent(widgetPointer, newValue) }
-    // }
+    // TODO: add support for the parent property
 
+    /// Specifies whether widget will be treated as the default widget within its toplevel when it has the focus, even if another widget is the default.
     public var recievesDefault: Bool {
         get { gtk_widget_get_receives_default(widgetPointer).toBool() }
         set { gtk_widget_set_receives_default(widgetPointer, newValue.toGBoolean()) }
@@ -182,20 +187,21 @@ open class Widget {
     /// The scale factor of the widget. See gtk_widget_get_scale_factor() for more details about widget scaling.
     public var scaleFactor: Int { Int(gtk_widget_get_scale_factor(widgetPointer)) }
 
+    /// Sets the sensitivity of a widget. A widget is sensitive if the user can interact with it. Insensitive widgets are “grayed out” and the user can’t interact with them. Insensitive widgets are known as “inactive”, “disabled”, or “ghosted” in some other toolkits.
     public var sensitive: Bool {
         get { gtk_widget_get_sensitive(widgetPointer).toBool() }
         set { gtk_widget_set_sensitive(widgetPointer, newValue.toGBoolean()) }
     }
 
     /// Sets the text of tooltip to be the given string, which is marked up with the [Pango text markup language][PangoMarkupFormat]. Also see gtk_tooltip_set_markup().
-    public var tooltipMarkup: String {
-        get { String(cString: gtk_widget_get_tooltip_markup(widgetPointer)) }
+    public var tooltipMarkup: String? {
+        get { gtk_widget_get_tooltip_markup(widgetPointer)?.toString() }
         set { gtk_widget_set_tooltip_markup(widgetPointer, newValue) }
     }
 
     /// Sets the text of tooltip to be the given string.
-    public var tooltipText: String {
-        get { String(cString: gtk_widget_get_tooltip_text(widgetPointer)) }
+    public var tooltipText: String? {
+        get { gtk_widget_get_tooltip_text(widgetPointer)?.toString() }
         set { gtk_widget_set_tooltip_text(widgetPointer, newValue) }
     }
 
@@ -217,18 +223,19 @@ open class Widget {
         set { gtk_widget_set_vexpand_set(widgetPointer, newValue.toGBoolean()) }
     }
 
+    /// Sets the visibility state of widget. Note that setting this to TRUE doesn’t mean the widget is actually viewable, see gtk_widget_get_visible().
     public var visible: Bool {
         get { gtk_widget_get_visible(widgetPointer).toBool() }
         set { gtk_widget_set_visible(widgetPointer, newValue.toGBoolean()) }
     }
 
+    /// Override for width request of the widget, or -1 if natural request should be used.
     public var widthRequest: Int {
         get { getProperty(castedPointer(), name: "width-request") }
         set { setProperty(castedPointer(), name: "width-request", newValue: newValue) }
     }
 
-    // /// The widget’s window if it is realized, NULL otherwise.
-    // public var window: Window? { gtk_widget_get_window(widgetPointer) }
+    // TODO: add support for the window property
 
     // MARK: Public Methods
 
