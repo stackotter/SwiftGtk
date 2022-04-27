@@ -43,25 +43,25 @@ open class Widget {
     // MARK: Public Properties
 
     /// Sets whether the application intends to draw on the widget in an GtkWidget::draw handler.
-    public var appPaintable: Bool {
+    public var isAppPaintable: Bool {
         get { gtk_widget_get_app_paintable(widgetPointer).toBool() }
         set { gtk_widget_set_app_paintable(widgetPointer, newValue.toGBoolean()) }
     }
 
     /// Specifies whether widget can be a default widget. See gtk_widget_grab_default() for details about the meaning of “default”.
-    public var canDefault: Bool {
+    public var canBeDefaultWidget: Bool {
         get { gtk_widget_get_can_default(widgetPointer).toBool() }
         set { gtk_widget_set_can_default(widgetPointer, newValue.toGBoolean()) }
     }
 
     /// Specifies whether widget can own the input focus. See gtk_widget_grab_focus() for actually setting the input focus on a widget.
-    public var canFocus: Bool {
+    public var canHaveFocus: Bool {
         get { gtk_widget_get_can_focus(widgetPointer).toBool() }
         set { gtk_widget_set_can_focus(widgetPointer, newValue.toGBoolean()) }
     }
 
     /// Whether the widget is part of a composite widget.
-    public var compositeChild: Bool {
+    public var isCompositeChild: Bool {
         get { getProperty(castedPointer(), name: "composite-child") }
         set { setProperty(castedPointer(), name: "composite-child", newValue: newValue) }
     }
@@ -69,25 +69,25 @@ open class Widget {
     // TODO: add support for the events property
 
     /// Whether to expand in both directions. Setting this sets both `GtkWidget:hexpand`` and `GtkWidget:vexpand``.
-    public var expand: Bool {
+    public var shouldExpandHorizontallyAndVertically: Bool {
         get { getProperty(castedPointer(), name: "expand") }
         set { setProperty(castedPointer(), name: "expand", newValue: newValue) }
     }
 
     /// Whether the widget should grab focus when it is clicked with the mouse.
-    public var focusOnClick: Bool {
+    public var shouldFocusOnClick: Bool {
         get { gtk_widget_get_focus_on_click(widgetPointer).toBool() }
         set { gtk_widget_set_focus_on_click(widgetPointer, newValue.toGBoolean()) }
     }
 
     /// How to distribute horizontal space if widget gets extra space, see GtkAlign.
-    public var hAlign: Align {
+    public var horizontalAlign: Align {
         get { gtk_widget_get_halign(widgetPointer).toAlign() }
         set { gtk_widget_set_halign(widgetPointer, newValue.toGtkAlign()) }
     }
 
     /// Whether the widget is the default widget.
-    public var hasDefault: Bool {
+    public var isDefaultWidget: Bool {
         get { getProperty(castedPointer(), name: "has-default") }
         set { setProperty(castedPointer(), name: "has-default", newValue: newValue) }
     }
@@ -105,25 +105,34 @@ open class Widget {
     }
 
     /// Override for height request of the widget, or -1 if natural request should be used.
-    public var heightRequest: Int {
-        get { getProperty(castedPointer(), name: "height-request") }
-        set { setProperty(castedPointer(), name: "height-request", newValue: newValue) }
+    public var heightRequest: Int? {
+        get {
+            let request: Int = getProperty(castedPointer(), name: "height-request")
+            return request == -1 ? nil : request
+        }
+        set {
+            guard let request = newValue else {
+                setProperty(castedPointer(), name: "height-request", newValue: -1)
+                return
+            }
+            setProperty(castedPointer(), name: "height-request", newValue: request)
+        }
     }
 
     /// Whether to expand horizontally. See gtk_widget_set_hexpand().
-    public var hExpand: Bool {
+    public var shouldExpandHorizontally: Bool {
         get { gtk_widget_get_hexpand(widgetPointer).toBool() }
         set { gtk_widget_set_hexpand(widgetPointer, newValue.toGBoolean()) }
     }
 
     /// Whether to use the GtkWidget:hexpand property. See gtk_widget_get_hexpand_set().
-    public var hExpandSet: Bool {
+    public var shouldUseHorizontalExpand: Bool {
         get { gtk_widget_get_hexpand_set(widgetPointer).toBool() }
         set { gtk_widget_set_hexpand_set(widgetPointer, newValue.toGBoolean()) }
     }
 
     /// Whether the widget is the focus widget within the toplevel.
-    public var isFocus: Bool {
+    public var isFocused: Bool {
         get { getProperty(castedPointer(), name: "is-focus") }
         set { setProperty(castedPointer(), name: "is-focus", newValue: newValue) }
     }
@@ -135,25 +144,25 @@ open class Widget {
     }
 
     /// Margin on bottom side of widget.
-    public var marginBottom: Int {
+    public var bottomMargin: Int {
         get { Int(gtk_widget_get_margin_bottom(widgetPointer)) }
         set { gtk_widget_set_margin_bottom(widgetPointer, gint(newValue)) }
     }
 
     /// Margin on end of widget, horizontally. This property supports left-to-right and right-to-left text directions.
-    public var marginEnd: Int {
+    public var trailingMargin: Int {
         get { Int(gtk_widget_get_margin_end(widgetPointer)) }
         set { gtk_widget_set_margin_end(widgetPointer, gint(newValue)) }
     }
 
     /// Margin on start of widget, horizontally. This property supports left-to-right and right-to-left text directions.
-    public var marginStart: Int {
+    public var leadingMargin: Int {
         get { Int(gtk_widget_get_margin_start(widgetPointer)) }
         set { gtk_widget_set_margin_start(widgetPointer, gint(newValue)) }
     }
 
     /// Margin on top side of widget.
-    public var marginTop: Int {
+    public var topMargin: Int {
         get { Int(gtk_widget_get_margin_top(widgetPointer)) }
         set { gtk_widget_set_margin_top(widgetPointer, gint(newValue)) }
     }
@@ -179,7 +188,7 @@ open class Widget {
     // TODO: add support for the parent property
 
     /// Specifies whether widget will be treated as the default widget within its toplevel when it has the focus, even if another widget is the default.
-    public var recievesDefault: Bool {
+    public var isDefaultWhenFocused: Bool {
         get { gtk_widget_get_receives_default(widgetPointer).toBool() }
         set { gtk_widget_set_receives_default(widgetPointer, newValue.toGBoolean()) }
     }
@@ -188,7 +197,7 @@ open class Widget {
     public var scaleFactor: Int { Int(gtk_widget_get_scale_factor(widgetPointer)) }
 
     /// Sets the sensitivity of a widget. A widget is sensitive if the user can interact with it. Insensitive widgets are “grayed out” and the user can’t interact with them. Insensitive widgets are known as “inactive”, “disabled”, or “ghosted” in some other toolkits.
-    public var sensitive: Bool {
+    public var isEnabled: Bool {
         get { gtk_widget_get_sensitive(widgetPointer).toBool() }
         set { gtk_widget_set_sensitive(widgetPointer, newValue.toGBoolean()) }
     }
@@ -206,33 +215,42 @@ open class Widget {
     }
 
     /// How to distribute vertical space if widget gets extra space, see GtkAlign.
-    public var vAlign: Align {
+    public var verticalAlign: Align {
         get { gtk_widget_get_valign(widgetPointer).toAlign() }
         set { gtk_widget_set_valign(widgetPointer, newValue.toGtkAlign()) }
     }
 
     /// Whether to expand vertically. See gtk_widget_set_vexpand().
-    public var vExpand: Bool {
+    public var shouldExpandVertically: Bool {
         get { gtk_widget_get_vexpand(widgetPointer).toBool() }
         set { gtk_widget_set_vexpand(widgetPointer, newValue.toGBoolean()) }
     }
 
     /// Whether to use the GtkWidget:vexpand property. See gtk_widget_get_vexpand_set().
-    public var vExpandSet: Bool {
+    public var shouldUseVerticalExpand: Bool {
         get { gtk_widget_get_vexpand_set(widgetPointer).toBool() }
         set { gtk_widget_set_vexpand_set(widgetPointer, newValue.toGBoolean()) }
     }
 
     /// Sets the visibility state of widget. Note that setting this to TRUE doesn’t mean the widget is actually viewable, see gtk_widget_get_visible().
-    public var visible: Bool {
+    public var isVisible: Bool {
         get { gtk_widget_get_visible(widgetPointer).toBool() }
         set { gtk_widget_set_visible(widgetPointer, newValue.toGBoolean()) }
     }
 
     /// Override for width request of the widget, or -1 if natural request should be used.
-    public var widthRequest: Int {
-        get { getProperty(castedPointer(), name: "width-request") }
-        set { setProperty(castedPointer(), name: "width-request", newValue: newValue) }
+    public var widthRequest: Int? {
+        get {
+            let request: Int = getProperty(castedPointer(), name: "width-request")
+            return request == -1 ? nil : request
+        }
+        set {
+            guard let request = newValue else {
+                setProperty(castedPointer(), name: "width-request", newValue: -1)
+                return
+            }
+            setProperty(castedPointer(), name: "width-request", newValue: request)
+        }
     }
 
     // TODO: add support for the window property
