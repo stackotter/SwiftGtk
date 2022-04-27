@@ -5,7 +5,9 @@
 import Foundation
 
 extension Widget {
+
     func castedPointer<T>() -> UnsafeMutablePointer<T>? {
         return widgetPointer?.cast()
     }
+
 }
