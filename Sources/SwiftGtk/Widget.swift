@@ -4,6 +4,9 @@
 
 import CGtk
 
+/// GtkWidget is the base class all widgets in GTK+ derive from. It manages the widget lifecycle, states and style.
+///
+/// [Gtk docs](https://docs.gtk.org/gtk3/class.Widget.html)
 open class Widget {
 
     private var signals: [(UInt, Any)] = []
@@ -37,23 +40,7 @@ open class Widget {
     func didMoveFromParent() {
     }
 
-    public func showAll() {
-        gtk_widget_show_all(widgetPointer)
-    }
-
-    public func showNow() {
-        gtk_widget_show_now(widgetPointer)
-    }
-
-    public func show() {
-        gtk_widget_show(widgetPointer)
-    }
-
-    public func hide() {
-        gtk_widget_hide(widgetPointer)
-    }
-
-    // MARK: Properties
+    // MARK: Public Properties
 
     public var appPaintable: Bool {
         get { gtk_widget_get_app_paintable(widgetPointer).toBool() }
@@ -242,6 +229,28 @@ open class Widget {
 
     // /// The widget’s window if it is realized, NULL otherwise.
     // public var window: Window? { gtk_widget_get_window(widgetPointer) }
+
+    // MARK: Public Methods
+
+    /// Reverses the effects of gtk_widget_show(), causing the widget to be hidden (invisible to the user).
+    public func hide() {
+        gtk_widget_hide(widgetPointer)
+    }
+
+    /// Flags a widget to be displayed. Any widget that isn’t shown will not appear on the screen. If you want to show all the widgets in a container, it’s easier to call gtk_widget_show_all() on the container, instead of individually showing the widgets.
+    public func show() {
+        gtk_widget_show(widgetPointer)
+    }
+
+    /// Recursively shows a widget, and any child widgets (if the widget is a container).
+    public func showAll() {
+        gtk_widget_show_all(widgetPointer)
+    }
+
+    /// Shows a widget. If the widget is an unmapped toplevel widget (i.e. a GtkWindow that has not yet been shown), enter the main loop and wait for the window to actually be mapped. Be careful; because the main loop is running, anything can happen during this function.
+    public func showNow() {
+        gtk_widget_show_now(widgetPointer)
+    }
 
 }
 

@@ -2,7 +2,7 @@ import CGtk
 
 /// The GtkFixed widget is a container which can place child widgets at fixed positions and with fixed sizes, given in pixels. GtkFixed performs no automatic layout management.
 /// 
-/// [GTK docs](https://docs.gtk.org/gtk3/class.Fixed.html)
+/// [Gtk docs](https://docs.gtk.org/gtk3/class.Fixed.html)
 public class Fixed: Container {
 
     /// Creates a new GtkFixed.
