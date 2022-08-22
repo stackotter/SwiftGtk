@@ -2,10 +2,10 @@
 
 import PackageDescription
 
-#if os(OSX)
+#if os(macOS)
   let cGtkSources = "Sources/CGtk/MacOS"
-#elseif os(Linux)
-  let cGtkSources = "Sources/CGtk/Linux"
+#elseif os(Linux) || os(Windows)
+  let cGtkSources = "Sources/CGtk/Linux+Windows"
 #else
   fatalError("Unsupported platform.")
 #endif
