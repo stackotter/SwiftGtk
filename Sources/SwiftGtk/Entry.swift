@@ -34,5 +34,15 @@ public class Entry: Widget {
         }
     }
 
+    public var placeholder: String {
+        get {
+            String(cString: gtk_entry_get_placeholder_text(castedPointer()))
+        }
+        set {
+            var value = newValue
+            gtk_entry_set_placeholder_text(castedPointer(), &value)
+        }
+    }
+
     public var changed: ((Entry) -> Void)?
 }
