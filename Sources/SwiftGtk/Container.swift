@@ -20,4 +20,14 @@ open class Container: Widget {
             widget.parentWidget = nil
         }
     }
+
+    public func removeAll() {
+        var list = gtk_container_get_children(castedPointer())
+
+        while let node = list {
+            let widget = node.pointee.data.assumingMemoryBound(to: GtkWidget.self)
+            gtk_container_remove(castedPointer(), widget)
+            list = node.pointee.next
+        }
+    }
 }
