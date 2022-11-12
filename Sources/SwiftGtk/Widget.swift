@@ -155,4 +155,40 @@ open class Widget {
             gtk_widget_set_opacity(widgetPointer, newValue)
         }
     }
+
+    public var topMargin: Int {
+        get {
+            return Int(gtk_widget_get_margin_top(widgetPointer))
+        }
+        set {
+            gtk_widget_set_margin_top(widgetPointer, Int32(newValue))
+        }
+    }
+
+    public var bottomMargin: Int {
+        get {
+            return Int(gtk_widget_get_margin_bottom(widgetPointer))
+        }
+        set {
+            gtk_widget_set_margin_bottom(widgetPointer, Int32(newValue))
+        }
+    }
+
+    public var leftMargin: Int {
+        get {
+            return Int(gtk_widget_get_margin_start(widgetPointer))
+        }
+        set {
+            gtk_widget_set_margin_start(widgetPointer, Int32(newValue))
+        }
+    }
+
+    public var rightMargin: Int {
+        get {
+            return Int(gtk_widget_get_margin_end(widgetPointer))
+        }
+        set {
+            gtk_widget_set_margin_end(widgetPointer, Int32(newValue))
+        }
+    }
 }
