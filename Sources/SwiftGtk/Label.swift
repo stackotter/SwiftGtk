@@ -12,6 +12,7 @@ public class Label: Widget {
         } else {
             widgetPointer = gtk_label_new(nil)
         }
+        horizontalAlignment = .start
     }
 
     public var text: String? {
@@ -42,24 +43,6 @@ public class Label: Widget {
         }
         set {
             gtk_label_set_justify(castedPointer(), newValue.toGtkJustification())
-        }
-    }
-
-    public var horizontalAlignment: Align {
-        get {
-            return gtk_widget_get_halign(castedPointer()).toAlign()
-        }
-        set {
-            gtk_widget_set_halign(castedPointer(), newValue.toGtkAlign())
-        }
-    }
-
-    public var verticalAlignment: Align {
-        get {
-            return gtk_widget_get_valign(castedPointer()).toAlign()
-        }
-        set {
-            gtk_widget_set_valign(castedPointer(), newValue.toGtkAlign())
         }
     }
 }

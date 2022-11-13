@@ -56,7 +56,7 @@ public class Scale: Widget {
             return Int(gtk_scale_get_digits(castedPointer()))
         }
         set {
-            gtk_scale_set_digits(castedPointer(), Int32(newValue))
+            gtk_scale_set_digits(castedPointer(), gint(newValue))
         }
     }
 

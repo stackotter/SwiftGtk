@@ -39,14 +39,14 @@ public class Window: Bin {
 
     public var defaultSize: Size {
         get {
-            var width: Int32 = 0
-            var height: Int32 = 0
+            var width: gint = 0
+            var height: gint = 0
             gtk_window_get_default_size(castedPointer(), &width, &height)
 
             return Size(width: Int(width), height: Int(height))
         }
         set (size) {
-            gtk_window_set_default_size(castedPointer(), Int32(size.width), Int32(size.height))
+            gtk_window_set_default_size(castedPointer(), gint(size.width), gint(size.height))
         }
     }
 

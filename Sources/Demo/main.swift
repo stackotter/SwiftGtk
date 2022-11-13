@@ -31,6 +31,18 @@ app.run { window in
     }
     buttonBox.add(entry)
 
+    let scrollable = ScrolledWindow()
+    scrollable.maximumContentHeight = 100
+    scrollable.minimumContentHeight = 100
+    let viewport = Viewport()
+    let content = Box(orientation: .vertical, spacing: 0)
+    for i in 0..<20 {
+        content.add(Label(text: "This is line number \(i)"))
+    }
+    viewport.add(content)
+    scrollable.add(viewport)
+    buttonBox.add(scrollable)
+
     let button = Button(label: "Press")
     button.label = "Press Me"
     button.clicked = { [weak label] _ in

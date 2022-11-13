@@ -161,7 +161,7 @@ open class Widget {
             return Int(gtk_widget_get_margin_top(widgetPointer))
         }
         set {
-            gtk_widget_set_margin_top(widgetPointer, Int32(newValue))
+            gtk_widget_set_margin_top(widgetPointer, gint(newValue))
         }
     }
 
@@ -170,7 +170,7 @@ open class Widget {
             return Int(gtk_widget_get_margin_bottom(widgetPointer))
         }
         set {
-            gtk_widget_set_margin_bottom(widgetPointer, Int32(newValue))
+            gtk_widget_set_margin_bottom(widgetPointer, gint(newValue))
         }
     }
 
@@ -179,7 +179,7 @@ open class Widget {
             return Int(gtk_widget_get_margin_start(widgetPointer))
         }
         set {
-            gtk_widget_set_margin_start(widgetPointer, Int32(newValue))
+            gtk_widget_set_margin_start(widgetPointer, gint(newValue))
         }
     }
 
@@ -188,7 +188,25 @@ open class Widget {
             return Int(gtk_widget_get_margin_end(widgetPointer))
         }
         set {
-            gtk_widget_set_margin_end(widgetPointer, Int32(newValue))
+            gtk_widget_set_margin_end(widgetPointer, gint(newValue))
+        }
+    }
+
+    public var horizontalAlignment: Align {
+        get {
+            return gtk_widget_get_halign(castedPointer()).toAlign()
+        }
+        set {
+            gtk_widget_set_halign(castedPointer(), newValue.toGtkAlign())
+        }
+    }
+
+    public var verticalAlignment: Align {
+        get {
+            return gtk_widget_get_valign(castedPointer()).toAlign()
+        }
+        set {
+            gtk_widget_set_valign(castedPointer(), newValue.toGtkAlign())
         }
     }
 }
