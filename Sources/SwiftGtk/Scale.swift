@@ -9,9 +9,14 @@ public class Scale: Widget {
     override func didMoveToParent() {
         super.didMoveToParent()
 
-        addSignal(name: "button-release-event") { [weak self] _ in
+        addSignal(name: "value-changed") { [weak self] in
             guard let self = self else { return }
             self.changed?(self)
+        }
+
+        addSignal(name: "button-release-event") { [weak self] _ in
+            guard let self = self else { return }
+            self.doneEditing?(self)
         }
     }
 
@@ -46,5 +51,15 @@ public class Scale: Widget {
         }
     }
 
+    public var decimalPlaces: Int {
+        get {
+            return Int(gtk_scale_get_digits(castedPointer()))
+        }
+        set {
+            gtk_scale_set_digits(castedPointer(), Int32(newValue))
+        }
+    }
+
     public var changed: ((Scale) -> Void)?
+    public var doneEditing: ((Scale) -> Void)?
 }
