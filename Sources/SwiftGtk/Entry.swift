@@ -10,9 +10,7 @@ public class Entry: Widget {
 
     public convenience init(placeholder: String) {
         self.init()
-
-        var placeholder = placeholder
-        gtk_entry_set_placeholder_text(castedPointer(), &placeholder)
+        gtk_entry_set_placeholder_text(castedPointer(), placeholder)
     }
 
     override func didMoveToParent() {
