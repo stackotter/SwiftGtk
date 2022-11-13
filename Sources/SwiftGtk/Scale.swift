@@ -6,6 +6,15 @@ public class Scale: Widget {
         widgetPointer = gtk_scale_new(Orientation.horizontal.toGtkOrientation(), nil)
     }
 
+    override func didMoveToParent() {
+        super.didMoveToParent()
+
+        addSignal(name: "button-release-event") { [weak self] _ in
+            guard let self = self else { return }
+            self.changed?(self)
+        }
+    }
+
     public var value: Double {
         get {
             return gtk_range_get_value(castedPointer())
@@ -36,4 +45,6 @@ public class Scale: Widget {
             gtk_adjustment_set_upper(adjustment, newValue)
         }
     }
+
+    public var changed: ((Scale) -> Void)?
 }

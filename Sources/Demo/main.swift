@@ -20,6 +20,7 @@ app.run { window in
     slider.minimum = 5
     slider.maximum = 10.5
     slider.value = 5.7
+    slider.changed = { _ in print("hi") }
     buttonBox.add(slider)
 
     let button = Button(label: "Press")
