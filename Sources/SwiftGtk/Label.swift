@@ -36,12 +36,30 @@ public class Label: Widget {
         }
     }
 
-    public var justify: Justification {
+    public var justification: Justification {
         get {
             return gtk_label_get_justify(castedPointer()).toJustification()
         }
         set {
             gtk_label_set_justify(castedPointer(), newValue.toGtkJustification())
+        }
+    }
+
+    public var horizontalAlignment: Align {
+        get {
+            return gtk_widget_get_halign(castedPointer()).toAlign()
+        }
+        set {
+            gtk_widget_set_halign(castedPointer(), newValue.toGtkAlign())
+        }
+    }
+
+    public var verticalAlignment: Align {
+        get {
+            return gtk_widget_get_valign(castedPointer()).toAlign()
+        }
+        set {
+            gtk_widget_set_valign(castedPointer(), newValue.toGtkAlign())
         }
     }
 }
