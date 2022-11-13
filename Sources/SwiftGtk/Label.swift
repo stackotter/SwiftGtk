@@ -35,4 +35,13 @@ public class Label: Widget {
             gtk_label_set_selectable(castedPointer(), newValue ? 1 : 0)
         }
     }
+
+    public var justify: Justification {
+        get {
+            return gtk_label_get_justify(castedPointer()).toJustification()
+        }
+        set {
+            gtk_label_set_justify(castedPointer(), newValue.toGtkJustification())
+        }
+    }
 }
