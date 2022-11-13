@@ -5,9 +5,13 @@
 import CGtk
 
 public class Image: Widget {
-    public init(filename: String) {
+    public init(path: String) {
         super.init()
 
-        widgetPointer = gtk_image_new_from_file(filename)
+        widgetPointer = gtk_image_new_from_file(path)
+    }
+
+    public func setPath(path: String) {
+        gtk_image_set_from_file(castedPointer(), path)
     }
 }

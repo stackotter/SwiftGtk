@@ -3,6 +3,7 @@
 //
 
 import SwiftGtk
+import Foundation
 
 let app = Application(applicationId: "com.tomaslinhart.swiftgtk.example")
 app.run { window in
@@ -20,8 +21,6 @@ app.run { window in
     slider.minimum = 5
     slider.maximum = 10.5
     slider.value = 5.7
-    slider.changed = { _ in print("editing") }
-    slider.doneEditing = { _ in print("done") }
     buttonBox.add(slider)
 
     let button = Button(label: "Press")
@@ -64,7 +63,7 @@ app.run { window in
         newWindow.title = "Just a window"
         newWindow.defaultSize = Size(width: 200, height: 200)
 
-        let image = Image(filename: "GTK.png")
+        let image = Image(path: Bundle.module.bundleURL.appendingPathComponent("GTK.png").path)
 
         newWindow.add(image)
 
