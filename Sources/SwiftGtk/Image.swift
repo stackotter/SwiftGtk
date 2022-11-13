@@ -11,7 +11,7 @@ public class Image: Widget {
         widgetPointer = gtk_image_new_from_file(path)
     }
 
-    public func setPath(path: String) {
+    public func setPath(_ path: String) {
         gtk_image_set_from_file(castedPointer(), path)
     }
 }
