@@ -16,6 +16,12 @@ app.run { window in
     label.selectable = true
     buttonBox.add(label)
 
+    let slider = Scale()
+    slider.minimum = 5
+    slider.maximum = 10.5
+    slider.value = 5.7
+    buttonBox.add(slider)
+
     let button = Button(label: "Press")
     button.label = "Press Me"
     button.clicked = { [weak label] _ in
