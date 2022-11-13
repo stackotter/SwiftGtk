@@ -23,6 +23,14 @@ app.run { window in
     slider.value = 5.7
     buttonBox.add(slider)
 
+    let entry = Entry(placeholder: "Test input")
+    entry.changed = { entry in
+        let text = entry.text
+        print(text)
+        entry.text = text
+    }
+    buttonBox.add(entry)
+
     let button = Button(label: "Press")
     button.label = "Press Me"
     button.clicked = { [weak label] _ in

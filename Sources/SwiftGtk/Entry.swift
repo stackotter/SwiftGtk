@@ -29,8 +29,7 @@ public class Entry: Widget {
             String(cString: gtk_entry_get_text(castedPointer()))
         }
         set {
-            var value = newValue
-            gtk_entry_set_text(castedPointer(), &value)
+            gtk_entry_set_text(castedPointer(), newValue)
         }
     }
 
@@ -39,8 +38,7 @@ public class Entry: Widget {
             String(cString: gtk_entry_get_placeholder_text(castedPointer()))
         }
         set {
-            var value = newValue
-            gtk_entry_set_placeholder_text(castedPointer(), &value)
+            gtk_entry_set_placeholder_text(castedPointer(), newValue)
         }
     }
 
