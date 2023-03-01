@@ -26,10 +26,6 @@ open class Widget {
         widgetPointer = nil
     }
 
-    deinit {
-        removeSignals()
-    }
-
     private func removeSignals() {
         for (handlerId, _) in signals {
             disconnectSignal(widgetPointer, handlerId: handlerId)
