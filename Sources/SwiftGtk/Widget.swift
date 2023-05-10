@@ -127,6 +127,17 @@ open class Widget {
         signals.append((handlerId, box))
     }
 
+    public func setForegroundColor(states: [StateType], color: Color) {
+        var gtkColor = color.gdkColor
+        gtk_widget_override_color(
+            self.castedPointer(),
+            GtkStateFlags(
+                rawValue: states.map(\.rawFlagValue.rawValue).reduce(0, |)
+            ),
+            &gtkColor
+        )
+    }
+
     public func showAll() {
         gtk_widget_show_all(widgetPointer)
     }
