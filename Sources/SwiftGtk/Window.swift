@@ -24,6 +24,15 @@ public class Window: Bin {
         widgetPointer = gtk_window_new(windowType.toGtkWindowType())
     }
 
+    private init(pointer: UnsafeMutablePointer<GtkWidget>) {
+        super.init()
+        self.widgetPointer = pointer
+    }
+
+    public static var rootWindow: Window {
+        return Window(pointer: UnsafeMutablePointer<GtkWidget>(gdk_screen_get_root_window(gdk_screen_get_default())))
+    }
+
     public var title: String? {
         get {
             return String(cString: gtk_window_get_title(castedPointer()))

@@ -205,4 +205,22 @@ open class Widget {
             gtk_widget_set_valign(castedPointer(), newValue.toGtkAlign())
         }
     }
+
+    public var expandHorizontally: Bool {
+        get {
+            return gtk_widget_get_hexpand(castedPointer()) != 0
+        }
+        set {
+            gtk_widget_set_hexpand(castedPointer(), newValue ? 1 : 0)
+        }
+    }
+
+    public var expandVertically: Bool {
+        get {
+            return gtk_widget_get_vexpand(castedPointer()) != 0
+        }
+        set {
+            gtk_widget_set_vexpand(castedPointer(), newValue ? 1 : 0)
+        }
+    }
 }
