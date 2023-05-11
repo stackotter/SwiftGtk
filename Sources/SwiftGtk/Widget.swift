@@ -2,6 +2,7 @@
 //  Copyright © 2015 Tomas Linhart. All rights reserved.
 //
 
+import Foundation
 import CGtk
 
 open class Widget {
@@ -127,14 +128,24 @@ open class Widget {
         signals.append((handlerId, box))
     }
 
-    public func setForegroundColor(states: [StateType], color: Color) {
-        var gtkColor = color.gdkColor
-        gtk_widget_override_color(
-            self.castedPointer(),
-            GtkStateFlags(
-                rawValue: states.map(\.rawFlagValue.rawValue).reduce(0, |)
-            ),
-            &gtkColor
+    public func setForegroundColor(color: Color) {
+        let className = String("class-\(UUID().uuidString)").replacingOccurrences(of: "-", with: "_")
+        gtk_style_context_add_class(
+            gtk_widget_get_style_context(widgetPointer),
+            className
+        )
+
+        let css = ".\(className){color:rgba(\(color.red*255),\(color.green*255),\(color.blue*255),\(color.alpha*255));}"
+        let provider = CssProvider()
+        try! provider.loadFromData(css)
+        addCssProvider(provider)
+    }
+
+    public func addCssProvider(_ provider: CssProvider) {
+        gtk_style_context_add_provider(
+            gtk_widget_get_style_context(widgetPointer),
+            OpaquePointer(provider.pointer),
+            UInt32(GTK_STYLE_PROVIDER_PRIORITY_APPLICATION)
         )
     }
 

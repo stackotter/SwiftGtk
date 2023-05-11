@@ -10,7 +10,7 @@ public class Application {
     private var windowCallback: ((ApplicationWindow) -> Void)?
 
     public init(applicationId: String) {
-        applicationPointer = gtk_application_new(applicationId, G_APPLICATION_FLAGS_NONE)
+        applicationPointer = gtk_application_new(applicationId, G_APPLICATION_DEFAULT_FLAGS)
     }
 
     @discardableResult
