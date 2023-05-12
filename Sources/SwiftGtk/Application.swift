@@ -10,7 +10,9 @@ public class Application {
     private var windowCallback: ((ApplicationWindow) -> Void)?
 
     public init(applicationId: String) {
-        applicationPointer = gtk_application_new(applicationId, G_APPLICATION_DEFAULT_FLAGS)
+        // Ignore the deprecation warning, making the change breaks support for platforms such as
+        // Ubuntu (before Lunar). This is due to Ubuntu coming with an older version of Gtk in apt.
+        applicationPointer = gtk_application_new(applicationId, G_APPLICATION_FLAGS_NONE)
     }
 
     @discardableResult
