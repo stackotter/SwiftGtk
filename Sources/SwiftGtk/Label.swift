@@ -17,32 +17,32 @@ public class Label: Widget {
 
     public var text: String? {
         get {
-            return String(cString: gtk_label_get_text(castedPointer()))
+            return String(cString: gtk_label_get_text(opaquePointer))
         }
         set {
             if let text = newValue {
-                gtk_label_set_text(castedPointer(), text)
+                gtk_label_set_text(opaquePointer, text)
             } else {
-                gtk_label_set_text(castedPointer(), nil)
+                gtk_label_set_text(opaquePointer, nil)
             }
         }
     }
 
     public var selectable: Bool {
         get {
-            return gtk_label_get_selectable(castedPointer()) == 1
+            return gtk_label_get_selectable(opaquePointer) == 1
         }
         set {
-            gtk_label_set_selectable(castedPointer(), newValue ? 1 : 0)
+            gtk_label_set_selectable(opaquePointer, newValue ? 1 : 0)
         }
     }
 
     public var justification: Justification {
         get {
-            return gtk_label_get_justify(castedPointer()).toJustification()
+            return gtk_label_get_justify(opaquePointer).toJustification()
         }
         set {
-            gtk_label_set_justify(castedPointer(), newValue.toGtkJustification())
+            gtk_label_set_justify(opaquePointer, newValue.toGtkJustification())
         }
     }
 }

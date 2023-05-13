@@ -11,17 +11,17 @@ app.run { window in
     window.defaultSize = Size(width: 400, height: 400)
     window.resizable = true
 
-    let buttonBox = ButtonBox(orientation: .vertical)
+    let box = Box(orientation: .vertical, spacing: 0)
 
     let label = Label()
     label.selectable = true
-    buttonBox.add(label)
+    box.add(label)
 
     let slider = Scale()
     slider.minimum = 5
     slider.maximum = 10.5
     slider.value = 5.7
-    buttonBox.add(slider)
+    box.add(slider)
 
     let entry = Entry(placeholder: "Test input")
     entry.changed = { entry in
@@ -29,7 +29,7 @@ app.run { window in
         print(text)
         entry.text = text
     }
-    buttonBox.add(entry)
+    box.add(entry)
 
     let scrollable = ScrolledWindow()
     scrollable.maximumContentHeight = 100
@@ -39,30 +39,29 @@ app.run { window in
     for i in 0..<20 {
         content.add(Label(text: "This is line number \(i)"))
     }
-    viewport.add(content)
-    scrollable.add(viewport)
-    buttonBox.add(scrollable)
+    viewport.setChild(content)
+    scrollable.setChild(viewport)
+    box.add(scrollable)
 
     let button = Button(label: "Press")
     button.label = "Press Me"
     button.clicked = { [weak label] _ in
         label?.text = "Oh, you pressed the button."
 
-        let newWindow = Window(windowType: .topLevel)
+        let newWindow = Window()
         newWindow.title = "Just a window"
         newWindow.defaultSize = Size(width: 200, height: 200)
 
         let labelPressed = Label(text: "Oh, you pressed the button.")
-        newWindow.add(labelPressed)
-
-        newWindow.showAll()
+        newWindow.setChild(labelPressed)
+        newWindow.show()
     }
 
-    buttonBox.add(button)
+    box.add(button)
 
     let calendarButton = Button(label: "Calendar")
     calendarButton.clicked = { _ in
-        let newWindow = Window(windowType: .topLevel)
+        let newWindow = Window()
         newWindow.title = "Just a window"
         newWindow.defaultSize = Size(width: 200, height: 200)
 
@@ -70,27 +69,44 @@ app.run { window in
         calendar.year = 2000
         calendar.showHeading = true
 
-        newWindow.add(calendar)
-
-        newWindow.showAll()
+        newWindow.setChild(calendar)
+        newWindow.show()
     }
 
-    buttonBox.add(calendarButton)
+    box.add(calendarButton)
 
     let imageButton = Button(label: "Image")
     imageButton.clicked = { _ in
-        let newWindow = Window(windowType: .topLevel)
+        let newWindow = Window()
         newWindow.title = "Just a window"
         newWindow.defaultSize = Size(width: 200, height: 200)
 
         let image = Image(path: Bundle.module.bundleURL.appendingPathComponent("GTK.png").path)
 
-        newWindow.add(image)
-
-        newWindow.showAll()
+        newWindow.setChild(image)
+        newWindow.show()
     }
+    box.add(imageButton)
 
-    buttonBox.add(imageButton)
+    let fileButton = Button(label: "Select file")
+    fileButton.label = "Select file"
+    fileButton.clicked = { [weak label] _ in
+        label?.text = "Selecting file"
+
+        let dialog = FileDialog()
+        dialog.title = "File dialog"
+        dialog.acceptLabel = "Fire away"
+
+        dialog.open { result in
+            switch result {
+                case .success(let file):
+                    label?.text = "Selected file: \(file.path)"
+                case .failure(let error):
+                    label?.text = "Cancelled selection: \(error.localizedDescription)"
+            }
+        }
+    }
+    box.add(fileButton)
 
     let textView = TextView()
     textView.backspace = { _ in
@@ -109,7 +125,8 @@ app.run { window in
         print(select ? "everything is selected" : "everything is unselected")
     }
 
-    buttonBox.add(textView)
+    box.add(textView)
 
-    window.add(buttonBox)
+    window.setChild(box)
+    window.show()
 }

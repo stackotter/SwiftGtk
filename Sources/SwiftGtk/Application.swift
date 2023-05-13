@@ -12,7 +12,7 @@ public class Application {
     public init(applicationId: String) {
         // Ignore the deprecation warning, making the change breaks support for platforms such as
         // Ubuntu (before Lunar). This is due to Ubuntu coming with an older version of Gtk in apt.
-        applicationPointer = gtk_application_new(applicationId, G_APPLICATION_FLAGS_NONE)
+        applicationPointer = gtk_application_new(applicationId, G_APPLICATION_DEFAULT_FLAGS)
     }
 
     @discardableResult
@@ -33,8 +33,6 @@ public class Application {
     private func activate() {
         let window = ApplicationWindow(application: self)
         windowCallback?(window)
-        window.showAll()
-
         self.applicationWindow = window
     }
 }

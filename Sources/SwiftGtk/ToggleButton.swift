@@ -32,30 +32,12 @@ public class ToggleButton: Button {
         }
     }
 
-    public var mode: Bool {
-        get {
-            return gtk_toggle_button_get_mode(castedPointer()).toBool()
-        }
-        set {
-            gtk_toggle_button_set_mode(castedPointer(), newValue.toGBoolean())
-        }
-    }
-
     public var active: Bool {
         get {
             return gtk_toggle_button_get_active(castedPointer()).toBool()
         }
         set {
             gtk_toggle_button_set_active(castedPointer(), newValue.toGBoolean())
-        }
-    }
-
-    public var inconsistent: Bool {
-        get {
-            return gtk_toggle_button_get_inconsistent(castedPointer()).toBool()
-        }
-        set {
-            gtk_toggle_button_set_inconsistent(castedPointer(), newValue.toGBoolean())
         }
     }
 

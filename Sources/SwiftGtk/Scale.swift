@@ -13,11 +13,6 @@ public class Scale: Widget {
             guard let self = self else { return }
             self.changed?(self)
         }
-
-        addSignal(name: "button-release-event") { [weak self] _ in
-            guard let self = self else { return }
-            self.doneEditing?(self)
-        }
     }
 
     public var value: Double {
@@ -61,5 +56,4 @@ public class Scale: Widget {
     }
 
     public var changed: ((Scale) -> Void)?
-    public var doneEditing: ((Scale) -> Void)?
 }

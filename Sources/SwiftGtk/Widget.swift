@@ -9,6 +9,10 @@ open class Widget {
     private var signals: [(UInt, Any)] = []
     var widgetPointer: UnsafeMutablePointer<GtkWidget>?
 
+    public var opaquePointer: OpaquePointer? {
+        return OpaquePointer(widgetPointer)
+    }
+
     public weak var parentWidget: Widget? {
         willSet {
 
@@ -130,39 +134,30 @@ open class Widget {
 
     public func setForegroundColor(color: Color) {
         let className = String("class-\(UUID().uuidString)").replacingOccurrences(of: "-", with: "_")
-        gtk_style_context_add_class(
-            gtk_widget_get_style_context(widgetPointer),
-            className
-        )
+        className.withCString { string in
+            gtk_widget_add_css_class(widgetPointer, string)
+        }
 
         let css = ".\(className){color:rgba(\(color.red*255),\(color.green*255),\(color.blue*255),\(color.alpha*255));}"
         let provider = CssProvider()
-        try! provider.loadFromData(css)
+        provider.loadFromData(css)
         addCssProvider(provider)
     }
 
     public func addCssProvider(_ provider: CssProvider) {
-        gtk_style_context_add_provider(
-            gtk_widget_get_style_context(widgetPointer),
+        gtk_style_context_add_provider_for_display(
+            gdk_display_get_default(),
             OpaquePointer(provider.pointer),
             UInt32(GTK_STYLE_PROVIDER_PRIORITY_APPLICATION)
         )
     }
 
-    public func showAll() {
-        gtk_widget_show_all(widgetPointer)
-    }
-
-    public func showNow() {
-        gtk_widget_show_now(widgetPointer)
-    }
-
     public func show() {
-        gtk_widget_show(widgetPointer)
+        gtk_widget_set_visible(widgetPointer, true.toGBoolean())
     }
 
     public func hide() {
-        gtk_widget_hide(widgetPointer)
+        gtk_widget_set_visible(widgetPointer, false.toGBoolean())
     }
 
     public var opacity: Double {

@@ -21,10 +21,10 @@ let package = Package(
         .systemLibrary(
             name: "CGtk",
             path: cGtkSources,
-            pkgConfig: "gtk+-3.0",
+            pkgConfig: "gtk4",
             providers: [
-                .brew(["gtk+3"]),
-                .apt(["libgtk-3-dev clang"])
+                .brew(["gtk+4"]),
+                .apt(["libgtk-4-dev clang"])
             ]
         ),
         .target(

@@ -4,7 +4,7 @@
 
 import CGtk
 
-public class TextView: Container {
+public class TextView: Widget {
     public override init() {
         super.init()
 

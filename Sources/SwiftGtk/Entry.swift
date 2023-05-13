@@ -24,10 +24,14 @@ public class Entry: Widget {
 
     public var text: String {
         get {
-            String(cString: gtk_entry_get_text(castedPointer()))
+            String(cString: gtk_entry_buffer_get_text(gtk_entry_get_buffer(castedPointer())))
         }
         set {
-            gtk_entry_set_text(castedPointer(), newValue)
+            newValue.withCString { pointer in
+                // TODO: Ensure that the character count is correct (should be number of bytes not number of
+                // characters).
+                gtk_entry_buffer_set_text(gtk_entry_get_buffer(castedPointer()), pointer, Int32(newValue.utf8.count))
+            }
         }
     }
 

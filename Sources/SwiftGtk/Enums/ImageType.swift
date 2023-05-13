@@ -6,39 +6,23 @@ import CGtk
 public enum ImageType {
     /// There is no image displayed by the widget.
     case empty
-    /// The widget contains a `GdkPixbuf`.
-    case pixbuf
-    /// The widget contains a [stock item name][gtkstock]
-    case stock
-    /// The widget contains a `GtkIconSet`.
-    case iconSet
-    /// The widget contains a `GdkPixbufAnimation`.
-    case animation
-    /// The widget contains a named icon. This image type was added in GTK+ 2.6.
+    /// The widget contains a named icon.
     case iconName
     /// The widget contains a GIcon. This image type was added in GTK+ 2.14.
     case gIcon
-    /// The widget contains a #cairo_surface_t. This image type was added in GTK+ 3.10.
-    case surface
+    /// The widget contains a `GdkPaintable`.
+    case paintable
 
     func toGtkImageType() -> GtkImageType {
         switch self {
         case .empty:
             return GTK_IMAGE_EMPTY
-        case .pixbuf:
-            return GTK_IMAGE_PIXBUF
-        case .stock:
-            return GTK_IMAGE_STOCK
-        case .iconSet:
-            return GTK_IMAGE_ICON_SET
-        case .animation:
-            return GTK_IMAGE_ANIMATION
         case .iconName:
             return GTK_IMAGE_ICON_NAME
         case .gIcon:
             return GTK_IMAGE_GICON
-        case .surface:
-            return GTK_IMAGE_SURFACE
+        case .paintable:
+            return GTK_IMAGE_PAINTABLE
         }
     }
 }
@@ -48,20 +32,12 @@ extension GtkImageType {
         switch self {
         case GTK_IMAGE_EMPTY:
             return .empty
-        case GTK_IMAGE_PIXBUF:
-            return .pixbuf
-        case GTK_IMAGE_STOCK:
-            return .stock
-        case GTK_IMAGE_ICON_SET:
-            return .iconSet
-        case GTK_IMAGE_ANIMATION:
-            return .animation
         case GTK_IMAGE_ICON_NAME:
             return .iconName
         case GTK_IMAGE_GICON:
             return .gIcon
-        case GTK_IMAGE_SURFACE:
-            return .surface
+        case GTK_IMAGE_PAINTABLE:
+            return .paintable
         default:
             fatalError("Unsupported GtkImageType enum value: \(self.rawValue)")
         }

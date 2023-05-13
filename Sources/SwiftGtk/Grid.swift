@@ -7,7 +7,9 @@ import CGtk
 /// Grid is a container which arranges its child widgets in rows and columns. It is a very similar to Table and Box, but it consistently uses Widget’s "margin" and "expand" properties instead of custom child properties, and it fully supports height-for-width geometry management.
 /// Children are added using `attach(child:left:top:width:height:)`. They can span multiple rows or columns. It is also possible to add a child next to an existing child, using `attach(nextTo:sibling:side:width:height:)`. The behaviour of Grid when several children occupy the same grid cell is undefined.
 /// Grid can be used like a Box by just using `add(_:)`, which will place children next to each other in the direction determined by the "orientation" property.
-public class Grid: Container {
+public class Grid: Widget {
+    var widgets: [Widget] = []
+
     override init() {
         super.init()
 

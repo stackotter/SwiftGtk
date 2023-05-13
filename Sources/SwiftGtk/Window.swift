@@ -4,24 +4,12 @@
 
 import CGtk
 
-public class Window: Bin {
-    public enum WindowType {
-        case topLevel
-        case popUp
+public class Window: Widget {
+    var child: Widget?
 
-        fileprivate func toGtkWindowType() -> GtkWindowType {
-            switch self {
-            case .topLevel:
-                return GTK_WINDOW_TOPLEVEL
-            case .popUp:
-                return GTK_WINDOW_POPUP
-            }
-        }
-    }
-
-    public init(windowType: WindowType = .topLevel) {
+    override public init() {
         super.init()
-        widgetPointer = gtk_window_new(windowType.toGtkWindowType())
+        widgetPointer = gtk_window_new()
     }
 
     private init(pointer: UnsafeMutablePointer<GtkWidget>) {
@@ -29,9 +17,10 @@ public class Window: Bin {
         self.widgetPointer = pointer
     }
 
-    public static var rootWindow: Window {
-        return Window(pointer: UnsafeMutablePointer<GtkWidget>(gdk_screen_get_root_window(gdk_screen_get_default())))
-    }
+    // public static var rootWindow: Window {
+    //     gdk_display_get_default()
+    //     return Window(pointer: UnsafeMutablePointer<GtkWidget>(gdk_screen_get_root_window(gdk_screen_get_default())))
+    // }
 
     public var title: String? {
         get {
@@ -68,14 +57,26 @@ public class Window: Bin {
         }
     }
 
-    public var hideTitlebarWhenMaximized: Bool {
-        get { return gtk_window_get_hide_titlebar_when_maximized(castedPointer()).toBool() }
-        set { gtk_window_set_hide_titlebar_when_maximized(castedPointer(), newValue.toGBoolean()) }
-    }
-
     private var _titleBar: Widget?
     public var titlebar: Widget? {
         get { return _titleBar }
         set { gtk_window_set_titlebar(castedPointer(), newValue?.widgetPointer) }
+    }
+
+    public func setChild(_ child: Widget) {
+        self.child?.parentWidget = nil
+        self.child = child
+        gtk_window_set_child(castedPointer(), child.widgetPointer)
+        child.parentWidget = self
+    }
+
+    public func removeChild() {
+        gtk_window_set_child(castedPointer(), nil)
+        child?.parentWidget = nil
+        child = nil
+    }
+
+    public func getChild() -> Widget? {
+        return child
     }
 }

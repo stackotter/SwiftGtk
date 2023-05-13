@@ -12,6 +12,6 @@ public class Image: Widget {
     }
 
     public func setPath(_ path: String) {
-        gtk_image_set_from_file(castedPointer(), path)
+        gtk_image_set_from_file(opaquePointer, path)
     }
 }

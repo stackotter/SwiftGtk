@@ -4,7 +4,7 @@
 
 import CGtk
 
-open class Button: Bin {
+open class Button: Widget {
     public override init() {
         super.init()
         widgetPointer = gtk_button_new()

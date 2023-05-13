@@ -4,8 +4,6 @@ import CGtk
 /// 
 /// [Gtk docs](https://docs.gtk.org/gtk3/enum.TextWindowType.html)
 public enum TextWindowType {
-    /// Invalid value, used as a marker.
-    case `private`
     /// Window that floats over scrolling areas.
     case widget
     /// Scrollable text window.
@@ -21,8 +19,6 @@ public enum TextWindowType {
 
     func toGtkTextWindowType() -> GtkTextWindowType {
         switch self {
-        case .private:
-            return GTK_TEXT_WINDOW_PRIVATE
         case .widget:
             return GTK_TEXT_WINDOW_WIDGET
         case .text:
@@ -42,8 +38,6 @@ public enum TextWindowType {
 extension GtkTextWindowType {
     func toTextWindowType() -> TextWindowType {
         switch self {
-        case GTK_TEXT_WINDOW_PRIVATE:
-            return .private
         case GTK_TEXT_WINDOW_WIDGET:
             return .widget
         case GTK_TEXT_WINDOW_TEXT:
