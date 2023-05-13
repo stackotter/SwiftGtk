@@ -27,6 +27,12 @@ public class Entry: Widget {
             String(cString: gtk_entry_buffer_get_text(gtk_entry_get_buffer(castedPointer())))
         }
         set {
+            // Ensure that an infinite loop isn't created by something setting from the `changed`
+            // signal handler.
+            guard newValue != text else {
+                return
+            }
+
             newValue.withCString { pointer in
                 // TODO: Ensure that the character count is correct (should be number of bytes not number of
                 // characters).
