@@ -48,6 +48,24 @@ public class ScrolledWindow: Widget {
         }
     }
 
+    public var propagateNaturalHeight: Bool {
+        get {
+            return gtk_scrolled_window_get_propagate_natural_height(opaquePointer).toBool()
+        }
+        set {
+            gtk_scrolled_window_set_propagate_natural_height(opaquePointer, newValue.toGBoolean())
+        }
+    }
+
+    public var propagateNaturalWidth: Bool {
+        get {
+            return gtk_scrolled_window_get_propagate_natural_width(opaquePointer).toBool()
+        }
+        set {
+            gtk_scrolled_window_set_propagate_natural_width(opaquePointer, newValue.toGBoolean())
+        }
+    }
+
     public func setChild(_ child: Widget) {
         self.child?.parentWidget = nil
         self.child = child
