@@ -45,4 +45,22 @@ public class Label: Widget {
             gtk_label_set_justify(opaquePointer, newValue.toGtkJustification())
         }
     }
+
+    public var lineWrap: Bool {
+        get {
+            return gtk_label_get_wrap(opaquePointer).toBool()
+        }
+        set {
+            gtk_label_set_wrap(opaquePointer, newValue.toGBoolean())
+        }
+    }
+
+    public var lineWrapMode: WrapMode {
+        get {
+            return gtk_label_get_wrap_mode(opaquePointer).toWrapMode()
+        }
+        set {
+            gtk_label_set_wrap_mode(opaquePointer, newValue.toPangoWrapMode())
+        }
+    }
 }
