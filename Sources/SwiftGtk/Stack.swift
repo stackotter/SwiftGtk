@@ -11,7 +11,7 @@ open class Stack: Widget {
         super.init()
 
         widgetPointer = gtk_stack_new()
-        
+
         self.transitionDuration = transitionDuration
         self.transitionType = transitionType
     }
